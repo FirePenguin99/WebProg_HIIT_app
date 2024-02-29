@@ -1,0 +1,102 @@
+body {
+    background: #ffe599;
+}
+
+* {
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-decoration: none;
+    font-weight: normal;
+    text-align: center;
+    margin: auto;
+}
+
+#back {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    height: 7.5vh;
+    width: 100vw;
+    background-color: lightgrey;
+    
+}
+button {
+    height: 6vh;
+    width: 45vw;
+    font-size: 400%;
+    justify-content: space-evenly;
+}
+
+a { 
+    margin: auto;
+    padding: 5%;
+    border-radius: 10vw;
+    font-size: 500%;
+    background: white;
+    display: grid;
+    text-decoration: none;
+    color: black;
+    width: 85%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+h1 {
+    margin: auto;
+    padding: 2.5%;
+    border-radius: 5vw;
+    font-size: 500%;
+    background: white;
+    color: black;
+    width: 80vw;
+    margin-top: 5%;
+}
+
+#character {
+    height: 10vh;
+}
+
+p {
+    border-style: solid;
+    border-color: darkgrey;
+    font-size: 300%;
+    margin: 0%;
+    height: 6.5vh;
+}
+
+main {
+    display: grid;
+    margin: auto;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: auto;
+    height: 52vh;
+    width: 80vw;
+}
+
+.workoutEmpty {
+    background-color: lightgrey;
+}
+
+.workoutTable {
+    background-color: lightgrey;
+    height: 5vh;
+}
+
+.workoutName {
+    background-color: red;
+}
+
+.workoutTime {
+    background-color: white;
+}
+
+#backAndMore {
+    display: flex;
+    width: 80vw;
+}
+
+.button_workout_list {
+    height: 5vh;
+    width: 45vw;
+    font-size: 350%;
+    justify-content: space-evenly;
+}
