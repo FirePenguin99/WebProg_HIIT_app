@@ -38,6 +38,10 @@ p {
     float: left;
 }
 
+#character {
+    height: 30vh;
+}
+
 .inputField {
     margin-top: 20%;
     background: white;

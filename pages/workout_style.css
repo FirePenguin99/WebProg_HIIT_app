@@ -52,7 +52,7 @@ h1 {
 }
 
 #character {
-    height: 10vh;
+    height: 30vh;
 }
 
 p {
@@ -61,42 +61,4 @@ p {
     font-size: 300%;
     margin: 0%;
     height: 6.5vh;
-}
-
-main {
-    display: grid;
-    margin: auto;
-    grid-template-columns: 2fr 1fr;
-    grid-template-rows: auto;
-    height: 52vh;
-    width: 80vw;
-}
-
-.workoutEmpty {
-    background-color: lightgrey;
-}
-
-.workoutTable {
-    background-color: lightgrey;
-    height: 5vh;
-}
-
-.workoutName {
-    background-color: red;
-}
-
-.workoutTime {
-    background-color: white;
-}
-
-#backAndMore {
-    display: flex;
-    width: 80vw;
-}
-
-.button_workout_list {
-    height: 5vh;
-    width: 45vw;
-    font-size: 350%;
-    justify-content: space-evenly;
 }
