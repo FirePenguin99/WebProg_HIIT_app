@@ -10,6 +10,20 @@ body {
     margin: auto;
 }
 
+a { 
+    margin: auto;
+    padding: 5%;
+    border-radius: 10vw;
+    font-size: 500%;
+    background: white;
+    display: grid;
+    text-decoration: none;
+    color: black;
+    width: 85%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
 #back {
     position: absolute;
     bottom: 0;
@@ -25,18 +39,15 @@ button {
     justify-content: space-evenly;
 }
 
-a { 
+#home_button {
+    border-radius: 0;
+    height: 6vh;
+    width: 45vw;
+    font-size: 400%;
+    justify-content: space-evenly;
+    padding: 0 0;
+    text-align: center;
     margin: auto;
-    padding: 5%;
-    border-radius: 10vw;
-    font-size: 500%;
-    background: white;
-    display: grid;
-    text-decoration: none;
-    color: black;
-    width: 85%;
-    margin-top: 5%;
-    margin-bottom: 5%;
 }
 
 h1 {
@@ -80,7 +91,13 @@ main {
     height: 5vh;
 }
 
-.workoutName {
+.workoutEasy {
+    background-color: yellow;
+}
+.workoutMedium {
+    background-color: orange;
+}
+.workoutHard {
     background-color: red;
 }
 
