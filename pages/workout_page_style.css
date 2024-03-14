@@ -1,0 +1,93 @@
+body {
+    background: #ffe599;
+}
+
+* {
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-decoration: none;
+    font-weight: normal;
+    text-align: center;
+    margin: auto;
+}
+
+#back {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    height: 7.5vh;
+    width: 100vw;
+    background-color: lightgrey;
+    
+}
+button {
+    height: 6vh;
+    width: 45vw;
+    font-size: 400%;
+    justify-content: space-evenly;
+}
+
+#startAndStop {
+    width: 85vw;
+    height: 12vh;
+    font-size: 800%;
+    background: greenyellow;
+    border-radius: 10vw;
+    border: none;
+    margin-top: 5vh
+}
+
+a { 
+    margin: auto;
+    padding: 5%;
+    border-radius: 10vw;
+    font-size: 500%;
+    background: white;
+    display: grid;
+    text-decoration: none;
+    color: black;
+    width: 85%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+h1 {
+    margin: auto;
+    padding: 2.5%;
+    border-radius: 5vw;
+    font-size: 500%;
+    background: white;
+    color: black;
+    width: 80vw;
+    margin-top: 5%;
+}
+
+#character {
+    height: 20vh;
+}
+
+#exercise_display {
+    height: 20vh;
+}
+
+p {
+    border-style: solid;
+    border-color: black;
+    font-size: 300%;
+    margin: auto;
+}
+
+.exercise {
+    border-width: 1vw;
+    background-color: lightgray;
+    height: 10vh;
+    width: 80%;
+    font-size: 500%;
+}
+
+#timer {
+    background-color: white;
+    width: 50vw;
+    height: 6.5vh;
+    border-radius: 5vw;
+    font-size: 600%;
+}
