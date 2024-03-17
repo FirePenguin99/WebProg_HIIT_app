@@ -1,25 +1,4 @@
-const currentWorkout = {
-    name: "Workout 2",
-    seconds: 3*60,
-    difficulty: "medium",
-    exercises: [
-        {
-            name: "sprint",
-            duration: 0.5*60,
-            difficulty: "hard"
-        },
-        {
-            name: "light jog",
-            duration: 2*60,
-            difficulty: "easy"
-        },
-        {
-            name: "sprint",
-            duration: 0.5*60,
-            difficulty: "hard"
-        }
-    ]
-}
+let currentWorkout;
 
 let currentExerciseCount = 0;
 let workoutTime = 0;
@@ -30,8 +9,25 @@ const buttonRef = document.querySelector("#startAndStop");
 const exerciseRef = document.querySelector(".exercise");
 const timerRef = document.querySelector("#timer");
 
-document.querySelector("#exercise_name").textContent = '"' + currentWorkout.name + '"';
 
+async function loadWorkout() {
+    const name = window.location.hash.substring(1);
+    console.log(name);
+    const response = await fetch(`workouts/${name}`);
+
+    console.log(response);
+
+    if (response.ok) {
+        currentWorkout = await response.json();
+        console.log(currentWorkout);
+    } else {
+        currentWorkout = { msg: 'failed to load messages :-(' };
+    }
+    
+    document.querySelector("#exercise_name").textContent = '"' + currentWorkout.name + '"';
+
+    updateExercise();
+}
 
 function startAndStop() {
     if (timerState == "paused") {
@@ -124,5 +120,6 @@ function updateTimer() {
     timerRef.textContent = frontTimerValue + ":" + backTimerValue
 }
 
-updateExercise();
+loadWorkout();
+
 buttonRef.addEventListener("click", startAndStop);

@@ -35,22 +35,28 @@ function refreshList() {
     for (let i = 0 + (pageNumber*7); i < (pageNumber+1)*7; i++) {
         if (i <= workoutList.length-1) {
             // console.log("added workout " + i);
-            const workout = document.createElement("p");
-            workout.textContent = workoutList[i].name;
+            const workoutElem = document.createElement("p");
+            workoutElem.textContent = workoutList[i].name;
 
             if (workoutList[i].difficulty == "easy") {
-                workout.classList.add("workoutEasy");
+                workoutElem.classList.add("workoutEasy");
             } else if (workoutList[i].difficulty == "medium") {
-                workout.classList.add("workoutMedium");
+                workoutElem.classList.add("workoutMedium");
             } else {
-                workout.classList.add("workoutHard");
+                workoutElem.classList.add("workoutHard");
             }
+
+            const open = document.createElement('a');
+            open.textContent = 'open';
+            open.href = `/workout_page.html#${workoutList[i].name}`;
+            // open.href = "/workout_page";
+            workoutElem.append(open);
             
             let time = document.createElement("p");
             time.classList.add("workoutTime");
             time.textContent = workoutList[i].seconds/60;
 
-            mainRef.append(workout);
+            mainRef.append(workoutElem);
             mainRef.append(time);
         }
         else {
@@ -78,7 +84,6 @@ function incrementPage() {
         refreshList();
     }
 }
-
 
 
 loadWorkouts();

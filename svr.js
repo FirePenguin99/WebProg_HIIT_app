@@ -58,11 +58,30 @@ const svrWorkouts = [
     }
 ];
 
+function findWorkout(name) {
+    for (const workout of svrWorkouts) {
+        if (workout.name === name) {
+          return workout;
+        }
+      }
+      return null;
+}
+
 function getWorkouts(req, res) {
     res.json(svrWorkouts);
 }
 
+function getWorkout(req, res) {
+    const result = findWorkout(req.params.id);
+    if (result) {
+      res.json(result);
+    } else {
+      res.status(404).send('No match for that Name.');
+    }
+  }
+
 app.get('/workouts', getWorkouts);
+app.get('/workouts/:id', getWorkout)
 
 
 
