@@ -30,10 +30,16 @@ button {
     width: 85vw;
     height: 12vh;
     font-size: 800%;
-    background: greenyellow;
     border-radius: 10vw;
     border: none;
     margin-top: 5vh
+}
+
+.start {
+    background: greenyellow;
+}
+.stop {
+    background: red;
 }
 
 a { 
@@ -82,6 +88,16 @@ p {
     height: 10vh;
     width: 80%;
     font-size: 500%;
+}
+
+.workoutEasy {
+    background-color: yellow;
+}
+.workoutMedium {
+    background-color: orange;
+}
+.workoutHard {
+    background-color: red;
 }
 
 #timer {
