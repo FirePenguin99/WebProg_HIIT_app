@@ -10,7 +10,7 @@ body {
     margin: auto;
 }
 
-a { 
+.anchorButton {
     margin: auto;
     padding: 5%;
     border-radius: 10vw;
@@ -93,12 +93,27 @@ main {
 
 .workoutEasy {
     background-color: yellow;
+    border-style: solid;
+    border-color: darkgrey;
+    font-size: 300%;
+    margin: 0%;
+    height: 6.5vh;
 }
 .workoutMedium {
     background-color: orange;
+    border-style: solid;
+    border-color: darkgrey;
+    font-size: 300%;
+    margin: 0%;
+    height: 6.5vh;
 }
 .workoutHard {
     background-color: red;
+    border-style: solid;
+    border-color: darkgrey;
+    font-size: 300%;
+    margin: 0%;
+    height: 6.5vh;
 }
 
 .workoutTime {
