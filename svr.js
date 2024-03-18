@@ -55,6 +55,42 @@ const svrWorkouts = [
                 difficulty: "hard"
             }
         ]
+    },
+    {
+        name: "Workout 4",
+        seconds: 1*60,
+        difficulty: "hard",
+        exercises: [
+            {
+                name: "Sit-ups",
+                duration: 1*60,
+                difficulty: "hard"
+            }
+        ]
+    },
+    {
+        name: "Workout 5",
+        seconds: 1*60,
+        difficulty: "hard",
+        exercises: [
+            {
+                name: "Sit-ups",
+                duration: 1*60,
+                difficulty: "hard"
+            }
+        ]
+    },
+    {
+        name: "Workout 6",
+        seconds: 1*60,
+        difficulty: "hard",
+        exercises: [
+            {
+                name: "Sit-ups",
+                duration: 1*60,
+                difficulty: "hard"
+            }
+        ]
     }
 ];
 
@@ -85,4 +121,4 @@ app.get('/workouts/:id', getWorkout)
 
 
 
-app.listen(9090);
+app.listen(8080);

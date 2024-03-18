@@ -34,10 +34,12 @@ function refreshList() {
     //remake list
     for (let i = 0 + (pageNumber*7); i < (pageNumber+1)*7; i++) {
         if (i <= workoutList.length-1) {
-            // console.log("added workout " + i);
+            // create element
             const workoutElem = document.createElement("a");
             workoutElem.textContent = workoutList[i].name;
+            workoutElem.href = `/workout_page.html#${workoutList[i].name}`;
 
+            // apply correct difficulty colour
             if (workoutList[i].difficulty == "easy") {
                 workoutElem.classList.add("workoutEasy");
             } else if (workoutList[i].difficulty == "medium") {
@@ -45,9 +47,8 @@ function refreshList() {
             } else {
                 workoutElem.classList.add("workoutHard");
             }
-
-            workoutElem.href = `/workout_page.html#${workoutList[i].name}`;
             
+            // create accompanying time element
             let time = document.createElement("p");
             time.classList.add("workoutTime");
             time.textContent = workoutList[i].seconds/60;
@@ -56,7 +57,7 @@ function refreshList() {
             mainRef.append(time);
         }
         else {
-            // console.log("added blank " + i);
+            // if no workouts to be displayed:
             const blank = document.createElement("p");
             blank.classList.add("workoutEmpty");
             mainRef.append(blank);
@@ -75,7 +76,7 @@ function decrementPage() {
     }
 }
 function incrementPage() {
-    if (workoutList[(pageNumber*7) + 1]) {
+    if (workoutList[((pageNumber+1)*7)]) {
         pageNumber +=1;
         refreshList();
     }
