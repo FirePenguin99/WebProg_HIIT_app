@@ -1,0 +1,170 @@
+body {
+    background: #ffe599;
+}
+
+* {
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-decoration: none;
+    font-weight: normal;
+    text-align: center;
+    margin: auto;
+}
+
+h1 {
+    margin: auto;
+    padding: 2.5%;
+    border-radius: 5vw;
+    font-size: 500%;
+    background: white;
+    color: black;
+    width: 80vw;
+    margin-top: 5%;
+}
+
+#character {
+    height: 10vh;
+}   
+
+p {
+    border-style: solid;
+    border-color: black;
+    font-size: 300%;
+    margin: auto;   
+}
+input {
+    border-style: solid;
+    border-color: black;
+    font-size: 300%;
+    margin: auto;   
+}
+
+#timeline {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    width: 90vw;
+}
+.timelineExercise {
+    width: 22vw;
+    height: 7.5vh;
+    background: repeating-linear-gradient(
+        45deg,
+        white,
+        white 15px,
+        grey 20px
+    );
+}
+.button_workout_list {
+    height: 5vh;
+    width: 45vw;
+    font-size: 350%;
+    justify-content: space-evenly;
+}
+
+
+#list {
+    background-color: white;
+    display: grid;
+    margin: auto;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    height: 32vh;
+    width: 90vw;
+}
+#listInputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    width: 90vw;
+}
+
+.exerciseTable {
+    background-color: lightgrey;
+    height: 5vh;
+    width: 44vw;
+}
+.exerciseItem {
+    width: 40vw;
+    height: 6vh;
+}
+
+button {
+    height: 6vh;
+    width: 45vw;
+    font-size: 400%;
+    justify-content: space-evenly;
+}
+
+timelineAndTimer {
+    width: 95vw;
+    display: flex;
+    margin-top: 1.5vh;
+    margin-bottom: 1.5vh;
+}
+.delete {
+    margin: auto;
+    text-decoration: none;
+    color: black;
+    width: 45vw;
+    height: 6.5vh;
+    border-radius: 5vw;
+    font-size: 600%;
+    background-color: red;
+}
+#timer {
+    background-color: white;
+    width: 45vw;
+    height: 6.5vh;
+    border-radius: 5vw;
+    font-size: 600%;
+}
+
+.submit {
+    margin-top: 1vh;
+    background: greenyellow;
+    width: 50vw;
+    height: 6.5vh;
+    border-radius: 5vw;
+    font-size: 600%;
+}
+
+#back {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    height: 7.5vh;
+    width: 100vw;
+    background-color: lightgrey;    
+}
+
+/* a { 
+    margin: auto;
+    padding: 5%;
+    border-radius: 10vw;
+    font-size: 500%;
+    background: white;
+    display: grid;
+    text-decoration: none;
+    color: black;
+    width: 85%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+} */
+
+/* .exercise {
+    border-width: 1vw;
+    background-color: lightgray;
+    height: 10vh;
+    width: 80%;
+    font-size: 500%;
+} */
+
+.workoutEasy {
+    background: yellow;
+}
+.workoutMedium {
+    background: orange;
+}
+.workoutHard {
+    background: red;
+}
