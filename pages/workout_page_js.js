@@ -58,7 +58,7 @@ function stopExercise() {
 
 
 function updateExercise() {
-    exerciseRef.textContent = currentWorkout.exercises[currentExerciseCount].name;
+    exerciseRef.textContent = currentWorkout.exercises[currentExerciseCount].name + " for " + currentWorkout.exercises[currentExerciseCount].duration + " seconds";
 
     exerciseRef.classList.remove(exerciseRef.classList[1]);
 
