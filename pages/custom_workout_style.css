@@ -54,13 +54,18 @@ input {
         grey 20px
     );
 }
-.button_workout_list {
+.button_exercise_list {
     height: 5vh;
     width: 45vw;
     font-size: 350%;
     justify-content: space-evenly;
 }
-
+.button_workout_list {
+    height: 5vh;
+    width: 30vw;
+    font-size: 350%;
+    justify-content: space-evenly;
+}
 
 #list {
     background-color: white;
