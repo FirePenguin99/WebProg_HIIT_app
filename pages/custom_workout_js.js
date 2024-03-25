@@ -138,6 +138,8 @@ function refreshTimeline() {
     }
 
     populateTimeline();
+
+    updateSelected();
 }
 
 function addToWorkout(elem) {
@@ -148,32 +150,34 @@ function addToWorkout(elem) {
         _class = "rest";
     }
 
-
-    timelineList.splice(timelineOffset + timelinePointer + 1, 0, {
+    timelineList.splice( (timelineOffset + timelinePointer + 1), 0, {
         name: elem.target.textContent,
         difficulty: _class
     })
 
-    timelinePointer = timelinePointer + 1;
+    // when selected position is already where the new exercise would go. therefore incrementing pointer would move selection to the right of new exercise 
+    if (timelineList.length-1 != 0) {
+        timelinePointer += 1;
+    } 
 
-    console.log(timelineElem.children[timelinePointer]);
-    console.log(timelinePointer);   
-
-    updateSelected();
-
+    // scroll right when new excercise goes outside timeline view
+    if (timelinePointer > 3) {
+        incrementTimeline();
+    }
+    
     refreshTimeline();
 }
 
 function incrementTimeline() {
     timelineOffset += 1;
+    timelinePointer += -1;
     refreshTimeline();
-    updateSelected(-1);
 }
 function decrementTimeline() {
     if (timelineOffset > 0) {
         timelineOffset -= 1;
+        timelinePointer += 1;
         refreshTimeline();
-        updateSelected(1);
     }
 }
 
@@ -237,17 +241,22 @@ function deleteSelectedExercise() {
     timelineList.splice(timelineOffset + timelinePointer, 1);
     timelinePointer += -1;
     refreshTimeline();
-    updateSelected();
 }
 
-function searchName() {
+
+function searchNameAndIntensity() {
     nameValue = document.querySelector("#nameInput").value
+    nameValue = nameValue.toLowerCase();
+    intensityValue = document.querySelector("#intensityInput").value
+    intensityValue = intensityValue.toLowerCase();
 
     const searchedExerciseList = [];
     
     for (let i = 0; i < exerciseList.length; i++) {
-        if ( (exerciseList[i].name).includes(nameValue) ) {
-            searchedExerciseList.push(exerciseList[i]);
+        if ( (exerciseList[i].difficulty).includes(intensityValue) ) {
+            if ( (exerciseList[i].name).includes(nameValue) ) {
+                searchedExerciseList.push(exerciseList[i]);
+            }
         }
     }
 
@@ -270,4 +279,5 @@ document.querySelector("#moreTimeline").addEventListener('click', incrementTimel
 
 document.querySelector("#deleteButton").addEventListener('click', deleteSelectedExercise);
 
-document.querySelector("#nameInput").addEventListener('input', searchName);
+document.querySelector("#nameInput").addEventListener('input', searchNameAndIntensity);
+document.querySelector("#intensityInput").addEventListener('input', searchNameAndIntensity);
