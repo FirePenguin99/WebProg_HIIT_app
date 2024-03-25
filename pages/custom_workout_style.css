@@ -173,3 +173,8 @@ timelineAndTimer {
 .workoutHard {
     background: red;
 }
+
+.selected {
+    border: green solid 10px;
+    margin: -10px;
+}

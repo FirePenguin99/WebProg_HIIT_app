@@ -10,6 +10,8 @@
 
 <!-- REPLACE ALL <p> with <div>s that have <p> inside them, so you can move around the <p> -->
 
+<!-- possibly add a timeLINE, like a horizontal line to the right of where ever the selected element is. Do this by line_position = selected_position + selected_width/2  -->
+
 <section id="character">
 
 </section>
@@ -31,13 +33,13 @@
 
 
 <timelineAndTimer>
-    <button class="delete"> Delete </button>
+    <button id="deleteButton" class="delete"> Delete </button>
     <p id="timer">00:00</p>    
 </timelineAndTimer>
 
 
 <main id="listInputs">
-    <input class="exerciseTable" placeholder="Name:"></input> <input class="exerciseTable" placeholder="Intensity:"></input>
+    <input id="nameInput" class="exerciseTable" placeholder="Name:"></input> <input id="intensityInput" class="exerciseTable" placeholder="Intensity:"></input>
 </main>
 <main id="list">
     <!-- <p class="exerciseItem">Name</p> <p class="exerciseItem">Intensity</p>

@@ -1,24 +1,9 @@
-let workoutTimeline = [];
-let pageNumber = 0;
+const timelineElem = document.querySelector("#timeline");
+const timelineList = [
+];
 
 let timelinePointer = 0;
 let timelineOffset = 0;
-
-const timelineElem = document.querySelector("#timeline");
-const timelineList = [
-    {
-        name: "lunges1",
-        difficulty: "intense"
-    },
-    {
-        name: "lunges2",
-        difficulty: "rest"
-    },
-    {
-        name: "lunges2",
-        difficulty: "rest"
-    }
-];
 
 const exerciseListElem = document.querySelector("#list");
 const exerciseList = [
@@ -68,6 +53,10 @@ const exerciseList = [
     }
 ]
 
+let displayedExerciseList = exerciseList;
+
+let pageNumber = 0;
+
 const timerElem = document.querySelector("#timer");
 let timerValue = 0;
 
@@ -78,10 +67,10 @@ function populateExercises() {
         const exerciseElem = document.createElement("p");
         exerciseElem.classList.add("exerciseItem");
 
-        if (i <= exerciseList.length-1) {
-            exerciseElem.textContent = exerciseList[i].name;
+        if (i <= displayedExerciseList.length-1) {
+            exerciseElem.textContent = displayedExerciseList[i].name;
             
-            if (exerciseList[i].difficulty == "rest") {
+            if (displayedExerciseList[i].difficulty == "rest") {
                 exerciseElem.classList.add("workoutEasy");
             } else {
                 exerciseElem.classList.add("workoutHard");
@@ -106,7 +95,7 @@ function refreshList() {
 }
 
 function incrementPage() {
-    if (exerciseList[((pageNumber+1)*8)]) {
+    if (displayedExerciseList[((pageNumber+1)*8)]) {
         pageNumber +=1;
         refreshList();
     }
@@ -134,6 +123,8 @@ function populateTimeline() {
             }
         }
 
+        exerciseElem.addEventListener('click', selectTimeline);
+
         timelineElem.append(exerciseElem);
     }
 }
@@ -150,8 +141,6 @@ function refreshTimeline() {
 }
 
 function addToWorkout(elem) {
-    console.log(elem.target.classList[elem.target.classList.length - 1]);
-    
     let _class = "";
     if (elem.target.classList[elem.target.classList.length - 1] == "workoutHard") {
         _class = "intense";
@@ -159,10 +148,18 @@ function addToWorkout(elem) {
         _class = "rest";
     }
 
-    timelineList.push({
+
+    timelineList.splice(timelineOffset + timelinePointer + 1, 0, {
         name: elem.target.textContent,
         difficulty: _class
     })
+
+    timelinePointer = timelinePointer + 1;
+
+    console.log(timelineElem.children[timelinePointer]);
+    console.log(timelinePointer);   
+
+    updateSelected();
 
     refreshTimeline();
 }
@@ -170,14 +167,55 @@ function addToWorkout(elem) {
 function incrementTimeline() {
     timelineOffset += 1;
     refreshTimeline();
+    updateSelected(-1);
 }
 function decrementTimeline() {
     if (timelineOffset > 0) {
         timelineOffset -= 1;
         refreshTimeline();
+        updateSelected(1);
     }
 }
 
+
+function selectTimeline(elem) {
+    const tempArr = [];
+
+    for (let i = 0; i < timelineElem.children.length; i++) {
+        tempArr.push(timelineElem.children[i]);
+    }
+
+    let index = tempArr.indexOf(elem.target);
+
+    timelinePointer = index;
+
+    console.log(timelinePointer);
+    updateSelected();
+}
+
+function updateSelected(offset) {
+    for (let i = 0; i < timelineElem.children.length; i++) {
+        timelineElem.children[i].classList.remove("selected");
+    }
+
+    if (offset == null) {
+        offset = 0;
+    }
+
+    timelinePointer += offset;
+
+    if (timelinePointer < 0 || timelinePointer > 3) { // stops errors occuring when the selected exercise is moved left or right outside of the view of 4 exercises
+        return;
+    }
+
+    let selectedElem = timelineElem.children[timelinePointer];
+    // console.log(selectedElem);
+
+    selectedElem.classList.add("selected");
+
+    timerValue = (timelinePointer + timelineOffset) * 30;
+    updateTimer();
+}
 
 
 function updateTimer() {
@@ -194,11 +232,42 @@ function updateTimer() {
     timerElem.textContent = frontTimerValue + ":" + backTimerValue
 }
 
+
+function deleteSelectedExercise() {
+    timelineList.splice(timelineOffset + timelinePointer, 1);
+    timelinePointer += -1;
+    refreshTimeline();
+    updateSelected();
+}
+
+function searchName() {
+    nameValue = document.querySelector("#nameInput").value
+
+    const searchedExerciseList = [];
+    
+    for (let i = 0; i < exerciseList.length; i++) {
+        if ( (exerciseList[i].name).includes(nameValue) ) {
+            searchedExerciseList.push(exerciseList[i]);
+        }
+    }
+
+    displayedExerciseList = searchedExerciseList;
+
+    console.log(searchedExerciseList);
+
+    refreshList();
+}
+
 refreshList();
 refreshTimeline();
+updateSelected();
 
 document.querySelector("#backList").addEventListener('click', decrementPage);
 document.querySelector("#moreList").addEventListener('click', incrementPage);
 
 document.querySelector("#backTimeline").addEventListener('click', decrementTimeline);
 document.querySelector("#moreTimeline").addEventListener('click', incrementTimeline);
+
+document.querySelector("#deleteButton").addEventListener('click', deleteSelectedExercise);
+
+document.querySelector("#nameInput").addEventListener('input', searchName);
