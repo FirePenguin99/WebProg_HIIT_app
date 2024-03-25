@@ -267,6 +267,91 @@ function searchNameAndIntensity() {
     refreshList();
 }
 
+
+function openSubmit() {
+    document.querySelector("#submitBox").classList.remove("hidden");
+}
+function closeSubmit() {
+    document.querySelector("#submitBox").classList.add("hidden");
+}
+
+function finaliseExercise() {
+    const finalExerciseList = [];
+    let j = 0;
+    
+    finalExerciseList.push( {
+        name: timelineList[0].name,
+        duration: 30,
+        difficulty: timelineList[0].difficulty
+    } );
+
+    for (let i = 1; i < timelineList.length; i++) {
+        if (timelineList[i].name == timelineList[i-1].name) {   // if there are multiple instances of the same exercise connected to each other,
+            finalExerciseList[j].duration += 30;    // merge them and 30 seconds
+        }
+        else {
+            finalExerciseList.push( {
+                name: timelineList[i].name,
+                duration: 30,
+                difficulty: timelineList[i].difficulty
+            } );
+
+            j += 1;
+        }
+    }
+
+    console.log(timelineList);
+    console.log(finalExerciseList);
+
+    return finalExerciseList;
+}
+function calculateSumDuration(arr) {
+    let sumDuration = 0;
+    for (let i = 0; i < arr.length; i++) {
+        sumDuration += arr[i].duration;
+    }
+
+    return sumDuration;
+}
+function calculateDifficultyFactor(arr, sumDuration) {
+    let sumDifficulty = 0;
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i].difficulty == "intense") {
+            sumDifficulty += 1 * (arr[i].duration / 30);
+        } else {
+            sumDifficulty += 0;
+        }
+    }
+
+    const difficultyFactor = (sumDifficulty / (sumDuration/30));
+
+    console.log(difficultyFactor);
+
+    if (difficultyFactor > 0.25) {
+        if (difficultyFactor > 0.5) {
+            if (difficultyFactor >= 0.75) {
+                return "hard";
+            } else { return "medium"; }
+        } else { return "medium"; }
+    } else { return "easy"; }
+}
+
+function submitExercise() {
+    let finalName = document.querySelector("#submitName").value;
+    let finalExerciseList = finaliseExercise();
+    let finalLength = calculateSumDuration(finalExerciseList);
+    let finalDifficulty = calculateDifficultyFactor(finalExerciseList, finalLength);
+    
+    const finalObj = {
+        name: finalName,
+        seconds: finalLength,
+        difficulty: finalDifficulty,
+        exercises: finalExerciseList
+    }
+
+    console.log(finalObj);
+}
+
 refreshList();
 refreshTimeline();
 updateSelected();
@@ -281,3 +366,8 @@ document.querySelector("#deleteButton").addEventListener('click', deleteSelected
 
 document.querySelector("#nameInput").addEventListener('input', searchNameAndIntensity);
 document.querySelector("#intensityInput").addEventListener('input', searchNameAndIntensity);
+
+document.querySelector("#submit").addEventListener('click', openSubmit);
+document.querySelector("#submitBack").addEventListener('click', closeSubmit);
+
+document.querySelector("#submitDone").addEventListener('click', submitExercise);

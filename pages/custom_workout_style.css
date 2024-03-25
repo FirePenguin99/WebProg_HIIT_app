@@ -124,7 +124,7 @@ timelineAndTimer {
     font-size: 600%;
 }
 
-.submit {
+#submit {
     margin-top: 1vh;
     background: greenyellow;
     width: 50vw;
@@ -163,6 +163,30 @@ timelineAndTimer {
     width: 80%;
     font-size: 500%;
 } */
+
+#submitForm {
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+
+    border: solid grey 5px;
+    border-radius: 5%;
+
+    position: fixed;
+    left: 10%;
+    top: 30%;
+    width: 80vw;
+    height: 40vh;
+    background-color: white;
+}
+
+.hidden {
+    display: none;
+}
+
+label {
+    font-size: 300%;
+}
 
 .workoutEasy {
     background: yellow;
