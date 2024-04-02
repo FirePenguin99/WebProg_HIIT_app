@@ -10,20 +10,15 @@ body {
     margin: auto;
 }
 
-#back {
-    position: absolute;
-    bottom: 0;
-    display: flex;
-    height: 7.5vh;
-    width: 100vw;
-    background-color: lightgrey;
-    
-}
-button {
-    height: 6vh;
-    width: 45vw;
-    font-size: 400%;
-    justify-content: space-evenly;
+h1 {
+    margin: auto;
+    padding: 2.5%;
+    border-radius: 5vw;
+    font-size: 500%;
+    background: white;
+    color: black;
+    width: 80vw;
+    margin-top: 5%;
 }
 
 a { 
@@ -40,25 +35,40 @@ a {
     margin-bottom: 5%;
 }
 
-h1 {
-    margin: auto;
-    padding: 2.5%;
-    border-radius: 5vw;
-    font-size: 500%;
-    background: white;
-    color: black;
-    width: 80vw;
-    margin-top: 5%;
+button {
+    height: 6vh;
+    width: 45vw;
+    font-size: 400%;
+    justify-content: space-evenly;
 }
 
+
+
+
+/* character */
 #character {
     height: 30vh;
 }
 
-p {
-    border-style: solid;
-    border-color: darkgrey;
-    font-size: 300%;
-    margin: 0%;
-    height: 6.5vh;
+
+/* bottom bar navigation elems */
+#navigation {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    height: 7.5vh;
+    width: 100vw;
+    background-color: lightgrey;    
+}
+#home_button {
+    background: white;
+    color: black;
+    border-radius: 0;
+    height: 6vh;
+    width: 45vw;
+    font-size: 400%;
+    justify-content: space-evenly;
+    padding: 0 0;
+    text-align: center;
+    margin: auto;
 }

@@ -5,17 +5,14 @@
 <link rel="stylesheet" href="custom_workout_style.css">
 
 <h1>Make it yourself!</h1> 
-<!-- use JS to change the textContent of this to a name in storage (.txt) -->
-
 
 <!-- REPLACE ALL <p> with <div>s that have <p> inside them, so you can move around the <p> -->
 
 <!-- possibly add a timeLINE, like a horizontal line to the right of where ever the selected element is. Do this by line_position = selected_position + selected_width/2  -->
 
 <section id="character">
-
+    <!-- here be character, yarr -->
 </section>
-
 
 
 <main id="timeline">
@@ -25,52 +22,49 @@
     <p class="timelineExercise"></p>
 </main>
 
+
 <section id="timelineBackAndMore">
     <button id="backTimeline" class="button_exercise_list"> <- Prev 30s </button>
     <button id="moreTimeline" class="button_exercise_list"> Next 30s -> </button>
 </section>
 
 
-
 <timelineAndTimer>
-    <button id="deleteButton" class="delete"> Delete </button>
-    <p id="timer">00:00</p>    
+    <button id="deleteButton">  Delete  </button>
+    <p      id="timer">         00:00   </p>    
 </timelineAndTimer>
 
 
 <main id="listInputs">
     <input id="nameInput" class="exerciseTable" placeholder="Name:"></input> <input id="intensityInput" class="exerciseTable" placeholder="Intense/Rest:"></input>
 </main>
+
 <main id="list">
-    <!-- <p class="exerciseItem">Name</p> <p class="exerciseItem">Intensity</p>
-    <p class="exerciseItem">Name</p> <p class="exerciseItem">Intensity</p>
-    <p class="exerciseItem">Name</p> <p class="exerciseItem">Intensity</p>
-    <p class="exerciseItem">Name</p> <p class="exerciseItem">Intensity</p> -->
-    
+    <!-- dynamic exercise elems go here -->
 </main>
 
 <section id="listBackAndMore">
-    <button id="backList" class="button_workout_list"> <- Back </button>
-    <button id="createExercise" class="button_workout_list"> + </button>
-    <button id="moreList" class="button_workout_list"> More -> </button>
+    <button id="backList"       class="button_workout_list"> <- Back    </button>
+    <button id="createExercise" class="button_workout_list"> +          </button>
+    <button id="moreList"       class="button_workout_list"> More ->    </button>
 </section>
-
 
 
 <button id="submit" class="roundButton">Done!</button>
 
+
 <div id="submitBox" class="hidden">
-<div id="submitForm">
-    <label> Name your Exercise </label>
-    <input id="submitName" placeholder="enter name here..."> </input>
-    <button id="submitDone"> Done! </button>
-    <button id="submitBack"> Back </button>
+    <div id="submitForm">
+        <label> Name your Exercise </label>
+        <input id="submitName" placeholder="enter name here..."> </input>
+        <button id="submitDone"> Done! </button>
+        <button id="submitBack"> Back </button>
+    </div>
 </div>
-</div>
 
 
 
-<section id="back"> 
+<section id="navigation"> 
     <button onclick="history.back()"> Back </button>
-    <button> Home </button>
+    <a id="home_button" href="homepage.html"> Home </a>
 </section>

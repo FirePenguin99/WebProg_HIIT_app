@@ -10,46 +10,6 @@ body {
     margin: auto;
 }
 
-.anchorButton {
-    margin: auto;
-    padding: 5%;
-    border-radius: 10vw;
-    font-size: 500%;
-    background: white;
-    display: grid;
-    text-decoration: none;
-    color: black;
-    width: 85%;
-    margin-top: 5%;
-    margin-bottom: 5%;
-}
-
-#back {
-    position: absolute;
-    bottom: 0;
-    display: flex;
-    height: 7.5vh;
-    width: 100vw;
-    background-color: lightgrey;
-}
-button {
-    height: 6vh;
-    width: 45vw;
-    font-size: 400%;
-    justify-content: space-evenly;
-}
-
-#home_button {
-    border-radius: 0;
-    height: 6vh;
-    width: 45vw;
-    font-size: 400%;
-    justify-content: space-evenly;
-    padding: 0 0;
-    text-align: center;
-    margin: auto;
-}
-
 h1 {
     margin: auto;
     padding: 2.5%;
@@ -61,8 +21,13 @@ h1 {
     margin-top: 5%;
 }
 
-#character {
-    height: 10vh;
+main {
+    display: grid;
+    margin: auto;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: auto;
+    height: 52vh;
+    width: 80vw;
 }
 
 p {
@@ -73,22 +38,34 @@ p {
     height: 6.5vh;
 }
 
-main {
-    display: grid;
-    margin: auto;
-    grid-template-columns: 2fr 1fr;
-    grid-template-rows: auto;
-    height: 52vh;
-    width: 80vw;
+button {
+    height: 6vh;
+    width: 45vw;
+    font-size: 400%;
+    justify-content: space-evenly;
+}
+
+
+
+
+/* character */
+#character {
+    height: 10vh;
+}
+
+
+/* workouts */
+.workoutTable {
+    background-color: lightgrey;
+    height: 5vh;
 }
 
 .workoutEmpty {
     background-color: lightgrey;
 }
 
-.workoutTable {
-    background-color: lightgrey;
-    height: 5vh;
+.workoutTime {
+    background-color: white;
 }
 
 .workoutEasy {
@@ -116,10 +93,9 @@ main {
     height: 6.5vh;
 }
 
-.workoutTime {
-    background-color: white;
-}
 
+
+/* list navigation buttons */
 #backAndMore {
     display: flex;
     width: 80vw;
@@ -131,3 +107,48 @@ main {
     font-size: 350%;
     justify-content: space-evenly;
 }
+
+/* anchors that work and act like buttons */
+.anchorButton {
+    padding: 5%;
+    border-radius: 10vw;
+    font-size: 500%;
+    background: white;
+    display: grid;
+    color: black;
+    width: 85%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+
+/* bottom bar navigation elems */
+#navigation {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    height: 7.5vh;
+    width: 100vw;
+    background-color: lightgrey;
+}
+#home_button {
+    background: white;
+    color: black;
+    border-radius: 0;
+    height: 6vh;
+    width: 45vw;
+    font-size: 400%;
+    justify-content: space-evenly;
+    padding: 0 0;
+    text-align: center;
+    margin: auto;
+}
+
+
+
+
+
+
+
+
+

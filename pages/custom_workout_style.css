@@ -10,6 +10,7 @@ body {
     margin: auto;
 }
 
+
 h1 {
     margin: auto;
     padding: 2.5%;
@@ -21,16 +22,20 @@ h1 {
     margin-top: 5%;
 }
 
-#character {
-    height: 10vh;
-}   
-
 p {
     border-style: solid;
     border-color: black;
     font-size: 300%;
     margin: auto;   
 }
+
+button {
+    height: 6vh;
+    width: 45vw;
+    font-size: 400%;
+    justify-content: space-evenly;
+}
+
 input {
     border-style: solid;
     border-color: black;
@@ -38,6 +43,49 @@ input {
     margin: auto;   
 }
 
+label {
+    font-size: 300%;
+}
+
+timelineAndTimer {
+    width: 95vw;
+    display: flex;
+    margin-top: 1.5vh;
+    margin-bottom: 1.5vh;
+}
+
+
+
+
+/* variable classes to be assigned in JS */
+.hidden {
+    display: none;
+}
+.selected {
+    border: green solid 10px;
+    margin: -10px;
+}
+
+
+/* workouts */
+.workoutEasy {
+    background: yellow;
+}
+.workoutMedium {
+    background: orange;
+}
+.workoutHard {
+    background: red;
+}
+
+
+/* character */
+#character {
+    height: 10vh;
+}   
+
+
+/* timeline */
 #timeline {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -54,59 +102,19 @@ input {
         grey 20px
     );
 }
+
+
+/* for Prev 30s and More 30s buttons */
 .button_exercise_list {
     height: 5vh;
     width: 45vw;
     font-size: 350%;
     justify-content: space-evenly;
 }
-.button_workout_list {
-    height: 5vh;
-    width: 30vw;
-    font-size: 350%;
-    justify-content: space-evenly;
-}
 
-#list {
-    background-color: white;
-    display: grid;
-    margin: auto;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto;
-    height: 32vh;
-    width: 90vw;
-}
-#listInputs {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto;
-    width: 90vw;
-}
 
-.exerciseTable {
-    background-color: lightgrey;
-    height: 5vh;
-    width: 44vw;
-}
-.exerciseItem {
-    width: 40vw;
-    height: 6vh;
-}
-
-button {
-    height: 6vh;
-    width: 45vw;
-    font-size: 400%;
-    justify-content: space-evenly;
-}
-
-timelineAndTimer {
-    width: 95vw;
-    display: flex;
-    margin-top: 1.5vh;
-    margin-bottom: 1.5vh;
-}
-.delete {
+/* timer and delete button */
+#deleteButton {
     margin: auto;
     text-decoration: none;
     color: black;
@@ -124,6 +132,47 @@ timelineAndTimer {
     font-size: 600%;
 }
 
+
+/* input fields for exercise querying */
+#listInputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    width: 90vw;
+}
+.exerciseTable {
+    background-color: lightgrey;
+    height: 5vh;
+    width: 44vw;
+}
+
+
+/* class for the list and the dynamically created exercise items in the list */
+#list {
+    background-color: white;
+    display: grid;
+    margin: auto;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    height: 32vh;
+    width: 90vw;
+}
+.exerciseItem {
+    width: 40vw;
+    height: 6vh;
+}
+
+
+/* for list Back, create new exercise and list More buttons */
+.button_workout_list {
+    height: 5vh;
+    width: 30vw;
+    font-size: 350%;
+    justify-content: space-evenly;
+}
+
+
+/* for pop-up submit box */
 #submit {
     margin-top: 1vh;
     background: greenyellow;
@@ -132,38 +181,6 @@ timelineAndTimer {
     border-radius: 5vw;
     font-size: 600%;
 }
-
-#back {
-    position: absolute;
-    bottom: 0;
-    display: flex;
-    height: 7.5vh;
-    width: 100vw;
-    background-color: lightgrey;    
-}
-
-/* a { 
-    margin: auto;
-    padding: 5%;
-    border-radius: 10vw;
-    font-size: 500%;
-    background: white;
-    display: grid;
-    text-decoration: none;
-    color: black;
-    width: 85%;
-    margin-top: 5%;
-    margin-bottom: 5%;
-} */
-
-/* .exercise {
-    border-width: 1vw;
-    background-color: lightgray;
-    height: 10vh;
-    width: 80%;
-    font-size: 500%;
-} */
-
 #submitForm {
     display: flex;
     justify-content: flex-end;
@@ -180,25 +197,25 @@ timelineAndTimer {
     background-color: white;
 }
 
-.hidden {
-    display: none;
-}
 
-label {
-    font-size: 300%;
+/* bottom bar navigation elems */
+#navigation {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    height: 7.5vh;
+    width: 100vw;
+    background-color: lightgrey;    
 }
-
-.workoutEasy {
-    background: yellow;
-}
-.workoutMedium {
-    background: orange;
-}
-.workoutHard {
-    background: red;
-}
-
-.selected {
-    border: green solid 10px;
-    margin: -10px;
+#home_button {
+    background: white;
+    color: black;
+    border-radius: 0;
+    height: 6vh;
+    width: 45vw;
+    font-size: 400%;
+    justify-content: space-evenly;
+    padding: 0 0;
+    text-align: center;
+    margin: auto;
 }
