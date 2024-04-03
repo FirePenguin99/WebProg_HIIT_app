@@ -67,16 +67,7 @@ timelineAndTimer {
 }
 
 
-/* workouts */
-.workoutEasy {
-    background: yellow;
-}
-.workoutMedium {
-    background: orange;
-}
-.workoutHard {
-    background: red;
-}
+
 
 
 /* character */
@@ -103,6 +94,16 @@ timelineAndTimer {
     );
 }
 
+/* workouts, KEEP THIS UNDER ".timelineExercise". There's some weird heirarchy system that overwrites one another depending on their placement in the CSS */
+.workoutEasy {
+    background: yellow;
+}
+.workoutMedium {
+    background: orange;
+}
+.workoutHard {
+    background: red;
+}
 
 /* for Prev 30s and More 30s buttons */
 .button_exercise_list {

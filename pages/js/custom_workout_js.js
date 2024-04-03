@@ -197,22 +197,24 @@ function selectTimeline(elem) {
 }
 
 function updateSelected(offset) {
+  console.log(timelinePointer);
+
   for (let i = 0; i < timelineElem.children.length; i++) {
     timelineElem.children[i].classList.remove('selected');
   }
 
-  if (offset === null) {
+  if (offset == null) { // keep this "==" not "==="
     offset = 0;
   }
 
   timelinePointer += offset;
+
 
   if (timelinePointer < 0 || timelinePointer > 3) { // stops errors occuring when the selected exercise is moved left or right outside of the view of 4 exercises
     return;
   }
 
   const selectedElem = timelineElem.children[timelinePointer];
-  // console.log(selectedElem);
 
   selectedElem.classList.add('selected');
 
