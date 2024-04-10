@@ -40,10 +40,8 @@ function refreshList() {
       workoutElem.href = `/workout_page.html#${workoutList[i].name}`;
 
       // apply correct difficulty colour
-      if (workoutList[i].difficulty === 'easy') {
+      if (workoutList[i].difficulty === 'rest') {
         workoutElem.classList.add('workoutEasy');
-      } else if (workoutList[i].difficulty === 'medium') {
-        workoutElem.classList.add('workoutMedium');
       } else {
         workoutElem.classList.add('workoutHard');
       }

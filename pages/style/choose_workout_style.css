@@ -76,14 +76,6 @@ button {
     margin: 0%;
     height: 6.5vh;
 }
-.workoutMedium {
-    background-color: orange;
-    border-style: solid;
-    border-color: darkgrey;
-    font-size: 300%;
-    margin: 0%;
-    height: 6.5vh;
-}
 .workoutHard {
     background-color: red;
     border-style: solid;

@@ -37,17 +37,6 @@ button {
 
 
 
-/* workouts */
-.workoutEasy {
-    background-color: yellow;
-}
-.workoutMedium {
-    background-color: orange;
-}
-.workoutHard {
-    background-color: red;
-}
-
 /* character */
 #character {
     height: 20vh;
@@ -115,4 +104,15 @@ button {
     padding: 0 0;
     text-align: center;
     margin: auto;
+}
+
+/* workouts */
+.workoutEasy {
+    background-color: yellow;
+}
+.workoutMedium {
+    background-color: orange;
+}
+.workoutHard {
+    background-color: red;
 }

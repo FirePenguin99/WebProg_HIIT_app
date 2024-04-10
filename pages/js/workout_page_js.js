@@ -67,10 +67,8 @@ function updateExercise() {
 
   exerciseRef.classList.remove(exerciseRef.classList[1]);
 
-  if (currentWorkout.exercises[currentExerciseCount].difficulty === 'easy') {
+  if (currentWorkout.exercises[currentExerciseCount].difficulty === 'rest') {
     exerciseRef.classList.add('workoutEasy');
-  } else if (currentWorkout.exercises[currentExerciseCount].difficulty === 'medium') {
-    exerciseRef.classList.add('workoutMedium');
   } else {
     exerciseRef.classList.add('workoutHard');
   }
