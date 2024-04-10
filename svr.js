@@ -97,6 +97,53 @@ const svrWorkouts = [
   },
 ];
 
+const svrExercises = [
+  {
+    name: 'lunges1',
+    difficulty: 'intense',
+  },
+  {
+    name: 'lunges2',
+    difficulty: 'rest',
+  },
+  {
+    name: 'lunges3',
+    difficulty: 'rest',
+  },
+  {
+    name: 'lunges4',
+    difficulty: 'intense',
+  },
+  {
+    name: 'lunges5',
+    difficulty: 'intense',
+  },
+  {
+    name: 'lunges6',
+    difficulty: 'rest',
+  },
+  {
+    name: 'lunges7',
+    difficulty: 'intense',
+  },
+  {
+    name: 'idle rest',
+    difficulty: 'rest',
+  },
+  {
+    name: 'intense1',
+    difficulty: 'intense',
+  },
+  {
+    name: 'intense2',
+    difficulty: 'intense',
+  },
+  {
+    name: 'intense3',
+    difficulty: 'intense',
+  },
+];
+
 function findWorkout(name) {
   for (const workout of svrWorkouts) {
     if (workout.name === name) {
@@ -127,9 +174,14 @@ function sendWorkouts(req, res) {
   }
 }
 
+function getExercises(req, res) {
+  res.json(svrExercises);
+}
+
 
 app.get('/workouts', getWorkouts);
 app.get('/workouts/:id', getWorkout);
+app.get('/exercises', getExercises);
 
 app.post('/custom_workout', express.json(), sendWorkouts);
 

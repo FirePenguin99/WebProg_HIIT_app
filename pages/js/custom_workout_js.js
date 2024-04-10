@@ -6,52 +6,7 @@ let timelinePointer = 0;
 let timelineOffset = 0;
 
 const exerciseListElem = document.querySelector('#list');
-const exerciseList = [
-  {
-    name: 'lunges1',
-    difficulty: 'intense',
-  },
-  {
-    name: 'lunges2',
-    difficulty: 'rest',
-  },
-  {
-    name: 'lunges3',
-    difficulty: 'rest',
-  },
-  {
-    name: 'lunges4',
-    difficulty: 'intense',
-  },
-  {
-    name: 'lunges5',
-    difficulty: 'intense',
-  },
-  {
-    name: 'lunges6',
-    difficulty: 'rest',
-  },
-  {
-    name: 'lunges7',
-    difficulty: 'intense',
-  },
-  {
-    name: 'idle rest',
-    difficulty: 'rest',
-  },
-  {
-    name: 'intense1',
-    difficulty: 'intense',
-  },
-  {
-    name: 'intense2',
-    difficulty: 'intense',
-  },
-  {
-    name: 'intense3',
-    difficulty: 'intense',
-  },
-];
+const exerciseList = [];
 
 let displayedExerciseList = exerciseList;
 
@@ -60,6 +15,25 @@ let pageNumber = 0;
 const timerElem = document.querySelector('#timer');
 let timerValue = 0;
 
+async function loadExercises() {
+  const response = await fetch('exercises');
+  let exercises;
+  if (response.ok) {
+    exercises = await response.json();
+    // console.log(workouts);
+    parseExercises(exercises);
+  } else {
+    exercises = ['failed to load messages :-('];
+  }
+}
+
+function parseExercises(obj) {
+  for (const exercise of obj) {
+    exerciseList.push(exercise);
+  }
+
+  refreshList();
+}
 
 function populateExercises() {
   for (let i = 0 + (pageNumber * 8); i < (pageNumber + 1) * 8; i++) {
@@ -365,6 +339,8 @@ async function submitExercise() {
     console.log('failed to send message');
   }
 }
+
+loadExercises();
 
 refreshList();
 refreshTimeline();
