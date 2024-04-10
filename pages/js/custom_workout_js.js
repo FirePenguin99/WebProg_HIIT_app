@@ -336,7 +336,7 @@ function calculateDifficultyFactor(arr, sumDuration) {
   } else { return 'easy'; }
 }
 
-function submitExercise() {
+async function submitExercise() {
   const finalName = document.querySelector('#submitName').value;
   const finalExerciseList = finaliseExercise();
   const finalLength = calculateSumDuration(finalExerciseList);
@@ -350,6 +350,20 @@ function submitExercise() {
   };
 
   console.log(finalObj);
+
+  const payload = finalObj;
+
+  const response = await fetch('custom_workout', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
+  });
+
+  if (response.ok) {
+    console.log('huzzar!');
+  } else {
+    console.log('failed to send message');
+  }
 }
 
 refreshList();
