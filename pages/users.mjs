@@ -1,14 +1,8 @@
-export const currentUserId = '0001';
+export let currentUserId = '0001';
 
-
-// export function returnUserId(userId) {
-//   return userId;
-// }
-
-// export function increaseUserId(value) {
-//   userId += value;
-// }
-
+export function setCurrentUserId(id) {
+  currentUserId = id;
+}
 
 export const userList = [
   {

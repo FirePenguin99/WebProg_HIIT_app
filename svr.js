@@ -1,5 +1,5 @@
 import express from 'express';
-import * as users from './users.mjs';
+import * as users from './pages/users.mjs';
 
 const app = express();
 
