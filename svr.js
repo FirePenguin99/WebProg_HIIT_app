@@ -1,12 +1,11 @@
 import express from 'express';
+import * as users from './users.mjs';
 
 const app = express();
 
-// app.use(express.static('pages'));
+app.use(express.static('pages', { extensions: ['html'] })); // every hyperlink has an invisible .html at the end
 
-app.use(express.static('pages', { extensions: ['html'] })); // auto every hyperlink has an invisible .html at the end
-
-
+/*
 const svrWorkouts = [
   {
     name: 'Workout Sprinting',
@@ -96,7 +95,9 @@ const svrWorkouts = [
     ],
   },
 ];
+*/
 
+/*
 const svrExercises = [
   {
     name: 'lunges1',
@@ -143,9 +144,15 @@ const svrExercises = [
     difficulty: 'intense',
   },
 ];
+*/
+
+const currentWorkout = users.returnUsersWorkoutList('0001');
+
+const currentExercise = users.returnUsersExerciseList('0001');
+
 
 function findWorkout(name) {
-  for (const workout of svrWorkouts) {
+  for (const workout of currentWorkout) {
     if (workout.name === name) {
       return workout;
     }
@@ -154,7 +161,7 @@ function findWorkout(name) {
 }
 
 function getWorkouts(req, res) {
-  res.json(svrWorkouts);
+  res.json(currentWorkout);
 }
 
 function getWorkout(req, res) {
@@ -168,7 +175,7 @@ function getWorkout(req, res) {
 
 function sendWorkouts(req, res) {
   if (req.body) {
-    svrWorkouts.push(req.body);
+    currentWorkout.push(req.body);
     res.ok();
   } else {
     res.status(500).send('The sent body is empty');
@@ -176,13 +183,13 @@ function sendWorkouts(req, res) {
 }
 
 function getExercises(req, res) {
-  res.json(svrExercises);
+  res.json(currentExercise);
 }
 
 function sendExercises(req, res) {
   if (req.body) {
     // svrExercises.push(req.body);
-    svrExercises.unshift(req.body);
+    currentExercise.unshift(req.body);
     res.ok(); // this causes an error and breaks out of the response, stopping an infinite await to continue
     // res.status(200);
     res.status(500);
