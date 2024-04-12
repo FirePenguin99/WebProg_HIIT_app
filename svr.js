@@ -169,6 +169,7 @@ function getWorkout(req, res) {
 function sendWorkouts(req, res) {
   if (req.body) {
     svrWorkouts.push(req.body);
+    res.ok();
   } else {
     res.status(500).send('The sent body is empty');
   }
@@ -178,11 +179,24 @@ function getExercises(req, res) {
   res.json(svrExercises);
 }
 
+function sendExercises(req, res) {
+  if (req.body) {
+    // svrExercises.push(req.body);
+    svrExercises.unshift(req.body);
+    res.ok(); // this causes an error and breaks out of the response, stopping an infinite await to continue
+    // res.status(200);
+    res.status(500);
+  } else {
+    res.status(500).send('The sent body is empty');
+  }
+}
+
 
 app.get('/workouts', getWorkouts);
 app.get('/workouts/:id', getWorkout);
 app.get('/exercises', getExercises);
 
 app.post('/custom_workout', express.json(), sendWorkouts);
+app.post('/exercises', express.json(), sendExercises);
 
 app.listen(8080);

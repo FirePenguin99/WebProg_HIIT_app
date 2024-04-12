@@ -194,7 +194,21 @@ timelineAndTimer {
     height: 40vh;
     background-color: white;
 }
+#newExerciseForm {
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
 
+    border: solid grey 5px;
+    border-radius: 5%;
+
+    position: fixed;
+    left: 10%;
+    top: 30%;
+    width: 80vw;
+    height: 40vh;
+    background-color: white;
+}
 
 /* bottom bar navigation elems */
 #navigation {

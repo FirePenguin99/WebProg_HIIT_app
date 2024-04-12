@@ -1,12 +1,11 @@
 const timelineElem = document.querySelector('#timeline');
-const timelineList = [
-];
+const timelineList = [];
 
 let timelinePointer = 0;
 let timelineOffset = 0;
 
 const exerciseListElem = document.querySelector('#list');
-const exerciseList = [];
+let exerciseList = [];
 
 let displayedExerciseList = exerciseList;
 
@@ -16,11 +15,11 @@ const timerElem = document.querySelector('#timer');
 let timerValue = 0;
 
 async function loadExercises() {
+  exerciseList = [];
   const response = await fetch('exercises');
   let exercises;
   if (response.ok) {
     exercises = await response.json();
-    // console.log(workouts);
     parseExercises(exercises);
   } else {
     exercises = ['failed to load messages :-('];
@@ -31,7 +30,7 @@ function parseExercises(obj) {
   for (const exercise of obj) {
     exerciseList.push(exercise);
   }
-
+  displayedExerciseList = exerciseList;
   refreshList();
 }
 
@@ -61,6 +60,7 @@ function refreshList() {
 
   // clear list
   for (let i = 0; i < numberOfNodes; i++) {
+    console.log('cleared list');
     exerciseListElem.removeChild(exerciseListElem.children[0]);
   }
 
@@ -243,11 +243,11 @@ function searchNameAndIntensity() {
 }
 
 
-function openSubmit() {
-  document.querySelector('#submitBox').classList.remove('hidden');
+function openSubmit(elemId) {
+  document.querySelector(elemId).classList.remove('hidden');
 }
-function closeSubmit() {
-  document.querySelector('#submitBox').classList.add('hidden');
+function closeSubmit(elemId) {
+  document.querySelector(elemId).classList.add('hidden');
 }
 
 function finaliseExercise() {
@@ -310,7 +310,7 @@ function calculateDifficultyFactor(arr, sumDuration) {
   } else { return 'easy'; }
 }
 
-async function submitExercise() {
+async function submitWorkout() {
   const finalName = document.querySelector('#submitName').value;
   const finalExerciseList = finaliseExercise();
   const finalLength = calculateSumDuration(finalExerciseList);
@@ -340,11 +340,42 @@ async function submitExercise() {
   }
 }
 
+
+async function createExercise() {
+  const exerciseName = document.querySelector('#submitExerciseName').value;
+  const exerciseDescription = document.querySelector('#submitExerciseDescription').value;
+  const exerciseDifficulty = document.querySelector('#submitExerciseDifficulty').value;
+
+  const finalObj = {
+    name: exerciseName,
+    description: exerciseDescription,
+    difficulty: exerciseDifficulty,
+  };
+
+  console.log(finalObj);
+
+  const payload = finalObj;
+
+  const response = await fetch('exercises', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
+  });
+
+  if (response.ok) {
+    console.log('huzzar!');
+  } else {
+    console.log('failed to send message');
+  }
+
+  loadExercises();
+  pageNumber = 0;
+  closeSubmit('#newExerciseBox');
+}
+
 loadExercises();
 
-refreshList();
 refreshTimeline();
-updateSelected();
 
 document.querySelector('#backList').addEventListener('click', decrementPage);
 document.querySelector('#moreList').addEventListener('click', incrementPage);
@@ -357,7 +388,13 @@ document.querySelector('#deleteButton').addEventListener('click', deleteSelected
 document.querySelector('#nameInput').addEventListener('input', searchNameAndIntensity);
 document.querySelector('#intensityInput').addEventListener('input', searchNameAndIntensity);
 
-document.querySelector('#submit').addEventListener('click', openSubmit);
-document.querySelector('#submitBack').addEventListener('click', closeSubmit);
+document.querySelector('#submit').addEventListener('click', () => { openSubmit('#submitBox'); });
 
-document.querySelector('#submitDone').addEventListener('click', submitExercise);
+document.querySelector('#submitBack').addEventListener('click', () => { closeSubmit('#submitBox'); });
+document.querySelector('#submitDone').addEventListener('click', submitWorkout);
+
+
+document.querySelector('#createExercise').addEventListener('click', () => { openSubmit('#newExerciseBox'); });
+
+document.querySelector('#submitExerciseBack').addEventListener('click', () => { closeSubmit('#newExerciseBox'); });
+document.querySelector('#submitExerciseDone').addEventListener('click', createExercise);
