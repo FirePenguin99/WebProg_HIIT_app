@@ -3,12 +3,14 @@ const workoutList = [];
 let pageNumber = 0;
 const mainRef = document.querySelector('#main');
 
-async function loadWorkouts() {
-  const response = await fetch('workouts');
+async function loadUserWorkouts() {
+  const response = await fetch('workouts/' + '0001');
   let workouts;
   if (response.ok) {
     workouts = await response.json();
-    // console.log(workouts);
+
+    console.log(workouts);
+
     parseWorkouts(workouts);
   } else {
     workouts = ['failed to load messages :-('];
@@ -79,8 +81,7 @@ function incrementPage() {
   }
 }
 
-
-loadWorkouts();
+loadUserWorkouts();
 
 document.querySelector('#backList').addEventListener('click', decrementPage);
 document.querySelector('#moreList').addEventListener('click', incrementPage);

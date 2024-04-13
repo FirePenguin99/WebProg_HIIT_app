@@ -17,7 +17,11 @@ function titleWorkout(loadedTitle) {
 async function loadWorkout() {
   const name = window.location.hash.substring(1);
   console.log(name);
-  const response = await fetch(`workouts/${name}`);
+
+  const currentUserId = '0001'; // make this use SessionStorage
+
+  // const response = await fetch(`workouts/${name}`);
+  const response = await fetch('workout/' + currentUserId + '-' + name);
 
   console.log(response);
 

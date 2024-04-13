@@ -14,12 +14,16 @@ let pageNumber = 0;
 const timerElem = document.querySelector('#timer');
 let timerValue = 0;
 
-async function loadExercises() {
+async function loadUserExercises() {
   exerciseList = [];
-  const response = await fetch('exercises');
+  const response = await fetch('exercises/' + '0001');
   let exercises;
   if (response.ok) {
     exercises = await response.json();
+
+    // const workouts = findUserWithId(userList, '0001').workouts;
+    console.log(exercises);
+
     parseExercises(exercises);
   } else {
     exercises = ['failed to load messages :-('];
@@ -325,7 +329,10 @@ async function submitWorkout() {
 
   console.log(finalObj);
 
-  const payload = finalObj;
+  const payload = {
+    id: '0001',
+    workout: finalObj,
+  };
 
   const response = await fetch('custom_workout', {
     method: 'POST',
@@ -354,7 +361,10 @@ async function createExercise() {
 
   console.log(finalObj);
 
-  const payload = finalObj;
+  const payload = {
+    id: '0001',
+    exercise: finalObj,
+  };
 
   const response = await fetch('exercises', {
     method: 'POST',
@@ -368,12 +378,12 @@ async function createExercise() {
     console.log('failed to send message');
   }
 
-  loadExercises();
+  loadUserExercises();
   pageNumber = 0;
   closeSubmit('#newExerciseBox');
 }
 
-loadExercises();
+loadUserExercises();
 
 refreshTimeline();
 
