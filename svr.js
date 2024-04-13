@@ -442,6 +442,12 @@ function sendExercises(req, res) {
   }
 }
 
+function getUserList(req, res) {
+  res.json(userList);
+}
+
+app.get('/users', getUserList);
+
 app.get('/workouts/:userid', getUserWorkouts);
 app.get('/workout/:id', getWorkout);
 app.get('/exercises/:userid', getUserExercises);
