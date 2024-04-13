@@ -16,12 +16,11 @@ let timerValue = 0;
 
 async function loadUserExercises() {
   exerciseList = [];
-  const response = await fetch('exercises/' + '0001');
+  const response = await fetch('exercises/' + sessionStorage.getItem('userId'));
   let exercises;
   if (response.ok) {
     exercises = await response.json();
 
-    // const workouts = findUserWithId(userList, '0001').workouts;
     console.log(exercises);
 
     parseExercises(exercises);
@@ -330,7 +329,7 @@ async function submitWorkout() {
   console.log(finalObj);
 
   const payload = {
-    id: '0001',
+    id: sessionStorage.getItem('userId'),
     workout: finalObj,
   };
 
@@ -362,7 +361,7 @@ async function createExercise() {
   console.log(finalObj);
 
   const payload = {
-    id: '0001',
+    id: sessionStorage.getItem('userId'),
     exercise: finalObj,
   };
 

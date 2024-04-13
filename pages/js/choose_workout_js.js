@@ -4,7 +4,7 @@ let pageNumber = 0;
 const mainRef = document.querySelector('#main');
 
 async function loadUserWorkouts() {
-  const response = await fetch('workouts/' + '0001');
+  const response = await fetch('workouts/' + sessionStorage.getItem('userId'));
   let workouts;
   if (response.ok) {
     workouts = await response.json();

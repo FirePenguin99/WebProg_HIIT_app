@@ -30,8 +30,8 @@ function createUserElems() {
 
 
 function loginAsUser(id) {
-  // setCurrentUserId(id); change to sessionstorage version
   console.log(id);
+  sessionStorage.setItem('userId', id);
 
   window.location.href = 'homepage.html';
 }
