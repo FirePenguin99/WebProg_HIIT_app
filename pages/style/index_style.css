@@ -35,18 +35,6 @@ a {
 
 p {
     font-size: 400%;
-    /* float: left; */
-}
-
-.inputField {
-    margin-top: 20%;
-    background: white;
-    padding: 10%;
-    width: 80%;
-}
-
-input {
-    size: 90vw;
 }
 
 .accept {
