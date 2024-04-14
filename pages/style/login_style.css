@@ -20,7 +20,7 @@ a {
     text-decoration: none;
     color: black;
     width: 85%;
-    margin-top: 5%;
+    margin-top: 20%;
 }
 
 h1 {
@@ -35,36 +35,11 @@ h1 {
 
 p {
     font-size: 400%;
-    float: left;
 }
 
-#character {
-    height: 30vh;
-}
-
-.inputField {
-    margin-top: 20%;
-    background: white;
-    padding: 10%;
-    width: 80%;
-   
-}
-
-input {
-    size: 90vw;
-}
-
-.accept {
+div {
     padding: 5%;
-    font-size: 500%;
-    background: lightgreen;
-    display: grid;
-    text-decoration: none;
-    color: black;
+    background: white;
     width: 85%;
-    margin-top: 20%;
-}
-
-#logout {
-    margin-top: 20%;
+    margin-top: 5%;
 }

@@ -22,7 +22,7 @@ function createUserElems() {
 
     userElem.append(usernameElem);
 
-    document.body.append(userElem);
+    document.querySelector('#loginList').append(userElem);
 
     userElem.addEventListener('click', () => { loginAsUser(userList[i].id); });
   }
