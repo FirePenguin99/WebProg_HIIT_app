@@ -12,6 +12,16 @@ body {
     text-align: center;
 }
 
+h1 {
+    padding: 2.5%;
+    font-size: 500%;
+    border-radius: 5vw;
+    background: white;
+    color: black;
+    width: 75%;
+    margin-top: 5%;
+}
+
 a {
     padding: 5%;
     font-size: 500%;
@@ -23,19 +33,9 @@ a {
     margin-top: 20%;
 }
 
-h1 {
-    padding: 2.5%;
-    font-size: 500%;
-    border-radius: 5vw;
-    background: white;
-    color: black;
-    width: 75%;
-    margin-top: 5%;
-}
-
 p {
     font-size: 400%;
-    float: left;
+    /* float: left; */
 }
 
 .inputField {
@@ -43,7 +43,6 @@ p {
     background: white;
     padding: 10%;
     width: 80%;
-   
 }
 
 input {
@@ -59,4 +58,43 @@ input {
     color: black;
     width: 85%;
     margin-top: 20%;
+}
+
+button {
+    height: 6vh;
+    width: 45vw;
+    font-size: 400%;
+    justify-content: space-evenly;
+}
+
+.workoutEasy {
+    background-color: yellow;
+}
+.workoutMedium {
+    background-color: orange;
+}
+.workoutHard {
+    background-color: red;
+}
+
+/* bottom bar navigation elems */
+#navigation {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    height: 7.5vh;
+    width: 100vw;
+    background-color: lightgrey;    
+}
+#home_button {
+    background: white;
+    color: black;
+    border-radius: 0;
+    height: 6vh;
+    width: 45vw;
+    font-size: 400%;
+    justify-content: space-evenly;
+    padding: 0 0;
+    text-align: center;
+    margin: auto;
 }

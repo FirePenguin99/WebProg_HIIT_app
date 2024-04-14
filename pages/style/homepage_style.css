@@ -1,68 +1,14 @@
-body {
-    background: #ffe599;
-}
-
-* {
-    border: none;
-    margin: auto;
-    border-radius: 10vw;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    text-decoration: none;
-    font-weight: normal;
-    text-align: center;
-}
-
-a {
-    padding: 5%;
-    font-size: 500%;
-    background: white;
-    display: grid;
-    text-decoration: none;
-    color: black;
-    width: 85%;
-    margin-top: 5%;
-}
-
 h1 {
-    padding: 2.5%;
-    border-radius: 5vw;
-    font-size: 500%;
-    background: white;
-    color: black;
     width: 75%;
     margin-top: 5%;
 }
 
-p {
-    font-size: 400%;
-    float: left;
+a {
+    margin-top: 5%; 
 }
 
 #character {
     height: 30vh;
-}
-
-.inputField {
-    margin-top: 20%;
-    background: white;
-    padding: 10%;
-    width: 80%;
-   
-}
-
-input {
-    size: 90vw;
-}
-
-.accept {
-    padding: 5%;
-    font-size: 500%;
-    background: lightgreen;
-    display: grid;
-    text-decoration: none;
-    color: black;
-    width: 85%;
-    margin-top: 20%;
 }
 
 #logout {

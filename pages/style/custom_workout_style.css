@@ -1,23 +1,9 @@
-body {
-    background: #ffe599;
-}
-
 * {
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    text-decoration: none;
-    font-weight: normal;
-    text-align: center;
-    margin: auto;
+    border-radius: 0vw;
 }
 
 
 h1 {
-    margin: auto;
-    padding: 2.5%;
-    border-radius: 5vw;
-    font-size: 500%;
-    background: white;
-    color: black;
     width: 80vw;
     margin-top: 5%;
 }
@@ -26,15 +12,9 @@ p {
     border-style: solid;
     border-color: black;
     font-size: 300%;
-    margin: auto;   
+    /* margin: auto;    */
 }
 
-button {
-    height: 6vh;
-    width: 45vw;
-    font-size: 400%;
-    justify-content: space-evenly;
-}
 
 input {
     border-style: solid;
@@ -55,8 +35,6 @@ timelineAndTimer {
 }
 
 
-
-
 /* variable classes to be assigned in JS */
 .hidden {
     display: none;
@@ -65,9 +43,6 @@ timelineAndTimer {
     border: green solid 10px;
     margin: -10px;
 }
-
-
-
 
 
 /* character */
@@ -208,26 +183,4 @@ timelineAndTimer {
     width: 80vw;
     height: 40vh;
     background-color: white;
-}
-
-/* bottom bar navigation elems */
-#navigation {
-    position: absolute;
-    bottom: 0;
-    display: flex;
-    height: 7.5vh;
-    width: 100vw;
-    background-color: lightgrey;    
-}
-#home_button {
-    background: white;
-    color: black;
-    border-radius: 0;
-    height: 6vh;
-    width: 45vw;
-    font-size: 400%;
-    justify-content: space-evenly;
-    padding: 0 0;
-    text-align: center;
-    margin: auto;
 }

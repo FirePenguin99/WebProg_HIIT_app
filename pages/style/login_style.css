@@ -1,40 +1,6 @@
-body {
-    background: #ffe599;
-}
-
-* {
-    border: none;
-    margin: auto;
-    border-radius: 10vw;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    text-decoration: none;
-    font-weight: normal;
-    text-align: center;
-}
-
-a {
-    padding: 5%;
-    font-size: 500%;
-    background: white;
-    display: grid;
-    text-decoration: none;
-    color: black;
-    width: 85%;
-    margin-top: 20%;
-}
-
 h1 {
-    padding: 2.5%;
-    border-radius: 5vw;
-    font-size: 500%;
-    background: white;
-    color: black;
     width: 75%;
     margin-top: 5%;
-}
-
-p {
-    font-size: 400%;
 }
 
 div {
