@@ -4,6 +4,8 @@ const app = express();
 
 app.use(express.static('pages', { extensions: ['html'] })); // every hyperlink has an invisible .html at the end
 
+let userCount = 3;
+
 const userList = [
   {
     id: '0001',
@@ -300,6 +302,82 @@ function getUserList(req, res) {
   res.json(userList);
 }
 
+
+function createNewUserId(id) {
+  let idString = id;
+  while (idString.length < 4) {
+    idString = '0' + idString;
+  }
+  return idString;
+}
+
+function createNewUserObj(inputUsername) {
+  userCount += 1;
+  userList.append({
+    id: createNewUserId(userCount),
+    username: inputUsername,
+    workouts: [],
+    exercises: [
+      {
+        name: 'lunges1',
+        difficulty: 'intense',
+      },
+      {
+        name: 'lunges2',
+        difficulty: 'rest',
+      },
+      {
+        name: 'lunges3',
+        difficulty: 'rest',
+      },
+      {
+        name: 'lunges4',
+        difficulty: 'intense',
+      },
+      {
+        name: 'lunges5',
+        difficulty: 'intense',
+      },
+      {
+        name: 'lunges6',
+        difficulty: 'rest',
+      },
+      {
+        name: 'lunges7',
+        difficulty: 'intense',
+      },
+      {
+        name: 'idle rest',
+        difficulty: 'rest',
+      },
+      {
+        name: 'intense1',
+        difficulty: 'intense',
+      },
+      {
+        name: 'intense2',
+        difficulty: 'intense',
+      },
+      {
+        name: 'intense3',
+        difficulty: 'intense',
+      },
+    ],
+  });
+}
+
+function addNewUser(req, res) {
+  if (req.body.name) { // add .id and .exercise to POST payload body
+    createNewUserObj(req.body.name);
+
+    res.ok(); // this causes an error and breaks out of the response, stopping an infinite await to continue
+    res.status(200);
+    // res.ok = true; // does not work
+  } else {
+    res.status(500).send('The sent body is empty');
+  }
+}
+
 app.get('/users', getUserList);
 
 app.get('/workouts/:userid', getUserWorkouts);
@@ -308,6 +386,8 @@ app.get('/exercises/:userid', getUserExercises);
 
 app.post('/custom_workout', express.json(), sendWorkouts);
 app.post('/exercises', express.json(), sendExercises);
+
+app.post('/new_user', express.json(), addNewUser);
 
 
 app.listen(8080);
