@@ -19,3 +19,7 @@ a {
 #character {
     height: 30vh;
 }
+
+.greyedOut {
+    background-color: grey;
+}
