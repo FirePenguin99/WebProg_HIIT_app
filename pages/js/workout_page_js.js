@@ -20,7 +20,6 @@ async function loadWorkout() {
 
   const currentUserId = sessionStorage.getItem('userId'); // make this use SessionStorage
 
-  // const response = await fetch(`workouts/${name}`);
   const response = await fetch('workout/' + currentUserId + '-' + name);
 
   console.log(response);
@@ -51,7 +50,6 @@ function startAndStop() {
 
 function startExercise() {
   setTimeout(incrementTime, 1000);
-  // nextExercise();
 
   buttonRef.classList.remove(buttonRef.classList[1]);
 

@@ -37,10 +37,6 @@ function displayDailyWorkout() {
 }
 
 function timeIntoString(milliseconds) {
-  // const hours = Math.floor(milliseconds / 1000 / 60 / 60);
-  // const minutes = hours % 60;
-  // const seconds = minutes % 60;
-
   const seconds = Math.floor(milliseconds / 1000);
   const minutes = Math.floor(seconds / 60);
   const hours = Math.floor(minutes / 60);
@@ -61,7 +57,6 @@ function timeIntoString(milliseconds) {
     strHours = '0' + strHours;
   }
 
-  // const string = (hours) + ':' + (minutes % 60) + ':' + (seconds % 60);
   const string = strHours + ':' + strMinutes + ':' + strSeconds;
   return string;
 }
@@ -72,7 +67,6 @@ function refreshDailyTimer(time) {
   } else {
     const timeDiff = new Date(time - Date.now());
     console.log(timeDiff.getTime());
-    // dailyWorkoutElem.textContent = 'Daily reset in: ' + timeDiff.getHours() + ':' + timeDiff.getMinutes() + ':' + timeDiff.getSeconds();
     dailyWorkoutElem.textContent = 'Daily reset in: ' + timeIntoString(timeDiff.getTime());
     setTimeout(() => { refreshDailyTimer(time); }, 1000);
   }
