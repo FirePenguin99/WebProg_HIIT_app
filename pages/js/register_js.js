@@ -19,7 +19,10 @@ async function submitNewUser() {
     const newUserId = await response.json();
 
     sessionStorage.setItem('userId', newUserId);
-    window.location.href = 'homepage.html'; // need to make POST response give back the new userId that was just created on the server
+    sessionStorage.setItem('userName', usernameElem.value);
+    console.log(usernameElem.value);
+
+    window.location.href = 'homepage.html';
   } else {
     console.log('failed to send message');
   }

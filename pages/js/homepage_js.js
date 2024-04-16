@@ -1,5 +1,5 @@
 function displayUsername() {
-  const name = sessionStorage.getItem('userId');
+  const name = sessionStorage.getItem('userName');
 
   console.log(name);
 
