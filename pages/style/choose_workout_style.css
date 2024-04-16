@@ -1,24 +1,21 @@
-body {
-    background: #ffe599;
-}
-
 * {
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    text-decoration: none;
-    font-weight: normal;
-    text-align: center;
-    margin: auto;
+    border-radius: 0vw;
 }
 
 h1 {
-    margin: auto;
-    padding: 2.5%;
-    border-radius: 5vw;
-    font-size: 500%;
-    background: white;
-    color: black;
     width: 80vw;
     margin-top: 5%;
+}
+
+a {
+    padding: 0%;
+    font-size: 500%;
+    background: white;
+    display: grid;
+    text-decoration: none;
+    color: black;
+    width: 100%;
+    margin-top: 20%;
 }
 
 main {
@@ -37,14 +34,6 @@ p {
     margin: 0%;
     height: 6.5vh;
 }
-
-button {
-    height: 6vh;
-    width: 45vw;
-    font-size: 400%;
-    justify-content: space-evenly;
-}
-
 
 
 
@@ -70,6 +59,14 @@ button {
 
 .workoutEasy {
     background-color: yellow;
+    border-style: solid;
+    border-color: darkgrey;
+    font-size: 300%;
+    margin: 0%;
+    height: 6.5vh;
+}
+.workoutMedium {
+    background-color: orange;
     border-style: solid;
     border-color: darkgrey;
     font-size: 300%;
@@ -112,35 +109,3 @@ button {
     margin-top: 5%;
     margin-bottom: 5%;
 }
-
-
-/* bottom bar navigation elems */
-#navigation {
-    position: absolute;
-    bottom: 0;
-    display: flex;
-    height: 7.5vh;
-    width: 100vw;
-    background-color: lightgrey;
-}
-#home_button {
-    background: white;
-    color: black;
-    border-radius: 0;
-    height: 6vh;
-    width: 45vw;
-    font-size: 400%;
-    justify-content: space-evenly;
-    padding: 0 0;
-    text-align: center;
-    margin: auto;
-}
-
-
-
-
-
-
-
-
-

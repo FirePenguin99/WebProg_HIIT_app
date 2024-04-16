@@ -3,12 +3,14 @@ const workoutList = [];
 let pageNumber = 0;
 const mainRef = document.querySelector('#main');
 
-async function loadWorkouts() {
-  const response = await fetch('workouts');
+async function loadUserWorkouts() {
+  const response = await fetch('workouts/' + sessionStorage.getItem('userId'));
   let workouts;
   if (response.ok) {
     workouts = await response.json();
-    // console.log(workouts);
+
+    console.log(workouts);
+
     parseWorkouts(workouts);
   } else {
     workouts = ['failed to load messages :-('];
@@ -40,8 +42,10 @@ function refreshList() {
       workoutElem.href = `/workout_page.html#${workoutList[i].name}`;
 
       // apply correct difficulty colour
-      if (workoutList[i].difficulty === 'rest') {
+      if (workoutList[i].difficulty === 'easy') {
         workoutElem.classList.add('workoutEasy');
+      } else if (workoutList[i].difficulty === 'medium') {
+        workoutElem.classList.add('workoutMedium');
       } else {
         workoutElem.classList.add('workoutHard');
       }
@@ -79,8 +83,7 @@ function incrementPage() {
   }
 }
 
-
-loadWorkouts();
+loadUserWorkouts();
 
 document.querySelector('#backList').addEventListener('click', decrementPage);
 document.querySelector('#moreList').addEventListener('click', incrementPage);

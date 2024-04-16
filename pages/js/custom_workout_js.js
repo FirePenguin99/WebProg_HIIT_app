@@ -14,12 +14,15 @@ let pageNumber = 0;
 const timerElem = document.querySelector('#timer');
 let timerValue = 0;
 
-async function loadExercises() {
+async function loadUserExercises() {
   exerciseList = [];
-  const response = await fetch('exercises');
+  const response = await fetch('exercises/' + sessionStorage.getItem('userId'));
   let exercises;
   if (response.ok) {
     exercises = await response.json();
+
+    console.log(exercises);
+
     parseExercises(exercises);
   } else {
     exercises = ['failed to load messages :-('];
@@ -325,7 +328,10 @@ async function submitWorkout() {
 
   console.log(finalObj);
 
-  const payload = finalObj;
+  const payload = {
+    id: sessionStorage.getItem('userId'),
+    workout: finalObj,
+  };
 
   const response = await fetch('custom_workout', {
     method: 'POST',
@@ -340,8 +346,14 @@ async function submitWorkout() {
   }
 }
 
+function loadResponseExercises(resExercises) {
+  exerciseList = resExercises;
+  displayedExerciseList = exerciseList;
 
-async function createExercise() {
+  refreshList();
+}
+
+async function createExercise() { // make this use the response from the POST to refresh the exercise list, rather than re-GETing the exercises from the server
   const exerciseName = document.querySelector('#submitExerciseName').value;
   const exerciseDescription = document.querySelector('#submitExerciseDescription').value;
   const exerciseDifficulty = document.querySelector('#submitExerciseDifficulty').value;
@@ -354,7 +366,10 @@ async function createExercise() {
 
   console.log(finalObj);
 
-  const payload = finalObj;
+  const payload = {
+    id: sessionStorage.getItem('userId'),
+    exercise: finalObj,
+  };
 
   const response = await fetch('exercises', {
     method: 'POST',
@@ -362,18 +377,19 @@ async function createExercise() {
     body: JSON.stringify(payload),
   });
 
-  if (response.ok) {
-    console.log('huzzar!');
+  console.log(response);
+
+  if (response.ok) { // refresh exerciseList using the object from the response
+    const resExerciseList = await response.json();
+    loadResponseExercises(resExerciseList);
+    pageNumber = 0;
+    closeSubmit('#newExerciseBox');
   } else {
     console.log('failed to send message');
   }
-
-  loadExercises();
-  pageNumber = 0;
-  closeSubmit('#newExerciseBox');
 }
 
-loadExercises();
+loadUserExercises();
 
 refreshTimeline();
 
