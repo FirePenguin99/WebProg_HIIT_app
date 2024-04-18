@@ -29,7 +29,7 @@ function refreshList() {
   const numberOfNodes = mainRef.children.length;
 
   // clear list
-  for (let i = 2; i < numberOfNodes; i++) {
+  for (let i = 3; i < numberOfNodes; i++) {
     mainRef.removeChild(mainRef.children[2]); // this is constantly 2 as the next child fills the old position of the removed child
   }
 
@@ -55,8 +55,15 @@ function refreshList() {
       time.classList.add('workoutTime');
       time.textContent = workoutList[i].seconds / 60;
 
+      // create set Daily Workout button
+      const setDaily = document.createElement('p');
+      setDaily.classList.add('workoutSetDaily');
+      setDaily.textContent = 'Set Daily';
+      setDaily.addEventListener('click', () => { setDailyWorkout(workoutList[i].name); });
+
       mainRef.append(workoutElem);
       mainRef.append(time);
+      mainRef.append(setDaily);
     } else {
       // if no workouts to be displayed:
       const blank = document.createElement('p');
@@ -66,6 +73,10 @@ function refreshList() {
       const blank2 = document.createElement('p');
       blank2.classList.add('workoutEmpty');
       mainRef.append(blank2);
+
+      const blank3 = document.createElement('p');
+      blank3.classList.add('workoutEmpty');
+      mainRef.append(blank3);
     }
   }
 }
@@ -80,6 +91,25 @@ function incrementPage() {
   if (workoutList[((pageNumber + 1) * 7)]) {
     pageNumber += 1;
     refreshList();
+  }
+}
+
+async function setDailyWorkout(workoutName) {
+  const payload = {
+    id: sessionStorage.getItem('userId'),
+    daily: workoutName,
+  };
+
+  const response = await fetch('daily', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
+  });
+
+  if (response.ok) {
+    console.log('huzzar!');
+  } else {
+    console.log('failed to send message');
   }
 }
 

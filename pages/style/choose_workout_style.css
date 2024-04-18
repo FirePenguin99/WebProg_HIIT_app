@@ -21,7 +21,7 @@ a {
 main {
     display: grid;
     margin: auto;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 2fr 1fr 0.75fr;
     grid-template-rows: auto;
     height: 52vh;
     width: 80vw;
@@ -55,6 +55,10 @@ p {
 
 .workoutTime {
     background-color: white;
+}
+
+.workoutSetDaily {
+    background-color: cornflowerblue
 }
 
 .workoutEasy {

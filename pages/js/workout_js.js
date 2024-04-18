@@ -2,6 +2,10 @@ let dailyWorkout;
 
 const dailyWorkoutElem = document.querySelector('#daily_workout');
 
+function setHeadingName() {
+  document.querySelector('#headingName').textContent = 'Ready to move, ' + sessionStorage.getItem('userName');
+}
+
 async function loadDailyWorkout() {
   const response = await fetch('daily/' + sessionStorage.getItem('userId'));
   let dailyObj;
@@ -72,5 +76,6 @@ function refreshDailyTimer(time) {
   }
 }
 
+setHeadingName();
 
 loadDailyWorkout();

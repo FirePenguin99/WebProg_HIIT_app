@@ -417,6 +417,18 @@ function getUserDailyWorkout(req, res) {
   res.json(returnUserDailyWorkout(req.params.userid));
 }
 
+function setUserDailyWorkout(req, res) {
+  // userList[findIndexWithId(req.body.id)].daily.workoutName = req.body.daily;
+  // userList[findIndexWithId(req.body.id)].daily.timeCooldown = null;
+
+  userList[findIndexWithId(req.body.id)].daily = {
+    workoutName: req.body.daily,
+    timeCooldown: null,
+  };
+
+  res.end();
+}
+
 app.get('/users', getUserList);
 
 app.get('/workouts/:userid', getUserWorkouts);
@@ -428,6 +440,7 @@ app.post('/custom_workout', express.json(), sendWorkouts);
 app.post('/exercises', express.json(), sendExercises);
 
 app.post('/new_user', express.json(), addNewUser);
+app.post('/daily', express.json(), setUserDailyWorkout);
 
 
 app.listen(8080);
