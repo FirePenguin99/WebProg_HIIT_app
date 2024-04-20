@@ -340,6 +340,7 @@ async function submitWorkout() {
   });
 
   if (response.ok) {
+    window.location.href = 'choose_workout.html';
     console.log('huzzar!');
   } else {
     console.log('failed to send message');
