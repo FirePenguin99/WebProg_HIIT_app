@@ -9,11 +9,6 @@ const buttonRef = document.querySelector('#startAndStop');
 const exerciseRef = document.querySelector('.exercise');
 const timerRef = document.querySelector('#timer');
 
-function titleWorkout(loadedTitle) {
-  document.title = loadedTitle;
-}
-
-
 async function loadWorkout() {
   const name = window.location.hash.substring(1);
   console.log(name);
@@ -32,8 +27,8 @@ async function loadWorkout() {
   }
 
   document.querySelector('#exercise_name').textContent = '"' + currentWorkout.name + '"';
-
-  titleWorkout('Workout: ' + currentWorkout.name);
+  document.title = 'Workout: ' + currentWorkout.name;
+  document.querySelector('#description').textContent = currentWorkout.description;
 
   updateExercise();
 }

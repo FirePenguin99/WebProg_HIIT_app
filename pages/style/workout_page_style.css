@@ -22,7 +22,7 @@ p {
 
 /* name of exercise display */
 #exercise_display {
-    height: 20vh;
+    height: 15vh;
 }
 .exercise {
     border-width: 1vw;
@@ -30,6 +30,16 @@ p {
     height: 10vh;
     width: 80%;
     font-size: 500%;
+}
+
+#description {
+    font-size: 2.5rem;
+    background-color: white;
+    margin: 2vh;
+    margin-top: 0;
+    margin-bottom: 3vh;
+    text-wrap: wrap;
+    word-break: break-word;
 }
 
 
@@ -50,7 +60,7 @@ p {
     font-size: 800%;
     border-radius: 10vw;
     border: none;
-    margin-top: 5vh
+    margin-top: 5vh;
 }
 .start {
     background: greenyellow;
