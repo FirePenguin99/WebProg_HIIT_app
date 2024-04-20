@@ -1,7 +1,9 @@
-const workoutList = [];
+let workoutList = [];
 
 let pageNumber = 0;
 const mainRef = document.querySelector('#main');
+
+let optionSelectedWorkout;
 
 async function loadUserWorkouts() {
   const response = await fetch('workouts/' + sessionStorage.getItem('userId'));
@@ -30,7 +32,7 @@ function refreshList() {
 
   // clear list
   for (let i = 3; i < numberOfNodes; i++) {
-    mainRef.removeChild(mainRef.children[2]); // this is constantly 2 as the next child fills the old position of the removed child
+    mainRef.removeChild(mainRef.children[3]); // this is constantly 2 as the next child fills the old position of the removed child
   }
 
   // remake list
@@ -56,14 +58,14 @@ function refreshList() {
       time.textContent = workoutList[i].seconds / 60;
 
       // create set Daily Workout button
-      const setDaily = document.createElement('p');
-      setDaily.classList.add('workoutSetDaily');
-      setDaily.textContent = 'Set Daily';
-      setDaily.addEventListener('click', () => { setDailyWorkout(workoutList[i].name); });
+      const settingsButton = document.createElement('p');
+      settingsButton.classList.add('workoutSettings');
+      settingsButton.textContent = 'Options';
+      settingsButton.addEventListener('click', () => { openOptions(workoutList[i]); });
 
       mainRef.append(workoutElem);
       mainRef.append(time);
-      mainRef.append(setDaily);
+      mainRef.append(settingsButton);
     } else {
       // if no workouts to be displayed:
       const blank = document.createElement('p');
@@ -94,10 +96,44 @@ function incrementPage() {
   }
 }
 
-async function setDailyWorkout(workoutName) {
+function openOptions(_workout) {
+  optionSelectedWorkout = _workout;
+  document.querySelector('#settingsContainer').classList.remove('hidden');
+  document.querySelector('#workoutName').textContent = '"' + optionSelectedWorkout.name + '"';
+}
+
+function closeOptions() {
+  document.querySelector('#settingsContainer').classList.add('hidden');
+}
+
+async function deleteSelectedWorkout() {
   const payload = {
     id: sessionStorage.getItem('userId'),
-    daily: workoutName,
+    workoutName: optionSelectedWorkout.name,
+  };
+
+  const response = await fetch('deleteWorkout', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
+  });
+
+  if (response.ok) {
+    console.log('huzzar! : ' + optionSelectedWorkout);
+    workoutList = await response.json();
+    refreshList();
+    document.querySelector('#settingsContainer').classList.add('hidden');
+  } else {
+    console.log('failed to send message');
+  }
+
+  console.log(workoutList);
+}
+
+async function setDailyWorkout() {
+  const payload = {
+    id: sessionStorage.getItem('userId'),
+    daily: optionSelectedWorkout.name,
   };
 
   const response = await fetch('daily', {
@@ -117,3 +153,7 @@ loadUserWorkouts();
 
 document.querySelector('#backList').addEventListener('click', decrementPage);
 document.querySelector('#moreList').addEventListener('click', incrementPage);
+
+document.querySelector('#backButton').addEventListener('click', closeOptions);
+document.querySelector('#deleteWorkoutButton').addEventListener('click', () => { deleteSelectedWorkout(); });
+document.querySelector('#setDailyButton').addEventListener('click', () => { setDailyWorkout(); });

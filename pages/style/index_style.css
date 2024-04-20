@@ -86,3 +86,7 @@ button {
     text-align: center;
     margin: auto;
 }
+
+label {
+    font-size: 300%;
+}

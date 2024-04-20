@@ -66,6 +66,15 @@ const userList = [
           },
         ],
       },
+      {
+        name: 'Workout kagasd',
+      },
+      {
+        name: 'Workout uyiyiuaids',
+      },
+      {
+        name: 'Workout bruh',
+      },
     ],
     exercises: [
       {
@@ -243,8 +252,6 @@ const userList = [
   },
 ];
 
-// console.log(userList[0].daily.timeCooldown);
-
 function findIndexWithId(id) {
   for (let i = 0; i < userList.length; i++) {
     if (userList[i].id === id) {
@@ -418,15 +425,34 @@ function getUserDailyWorkout(req, res) {
 }
 
 function setUserDailyWorkout(req, res) {
-  // userList[findIndexWithId(req.body.id)].daily.workoutName = req.body.daily;
-  // userList[findIndexWithId(req.body.id)].daily.timeCooldown = null;
-
   userList[findIndexWithId(req.body.id)].daily = {
     workoutName: req.body.daily,
     timeCooldown: null,
   };
 
   res.end();
+}
+
+
+function findWorkoutObjWithWorkoutName(workoutName, workoutArray) {
+  for (let i = 0; i < workoutArray.length; i++) {
+    if (workoutArray[i].name === workoutName) {
+      return workoutArray[i];
+    }
+  }
+  return null;
+}
+
+function deleteSelectedWorkout(req, res) {
+  const userWorkoutList = userList[findIndexWithId(req.body.id)].workouts;
+  const index = userWorkoutList.indexOf(findWorkoutObjWithWorkoutName(req.body.workoutName, userWorkoutList));
+
+  // console.log(req.body.workoutName);
+  // console.log(index);
+
+  userList[findIndexWithId(req.body.id)].workouts.splice(index, 1);
+
+  res.json(userList[findIndexWithId(req.body.id)].workouts);
 }
 
 app.get('/users', getUserList);
@@ -441,6 +467,8 @@ app.post('/exercises', express.json(), sendExercises);
 
 app.post('/new_user', express.json(), addNewUser);
 app.post('/daily', express.json(), setUserDailyWorkout);
+
+app.post('/deleteWorkout', express.json(), deleteSelectedWorkout);
 
 
 app.listen(8080);

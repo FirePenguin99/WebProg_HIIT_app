@@ -57,6 +57,10 @@ p {
     background-color: white;
 }
 
+.workoutSettings {
+    background-color: grey
+}
+
 .workoutSetDaily {
     background-color: cornflowerblue
 }
@@ -112,4 +116,24 @@ p {
     width: 85%;
     margin-top: 5%;
     margin-bottom: 5%;
+}
+
+.hidden {
+    display: none;
+}
+
+#settingsBox {
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+
+    border: solid grey 5px;
+    border-radius: 5%;
+
+    position: fixed;
+    left: 10%;
+    top: 30%;
+    width: 80vw;
+    height: 40vh;
+    background-color: white;
 }

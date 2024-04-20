@@ -23,10 +23,6 @@ input {
     margin: auto;   
 }
 
-label {
-    font-size: 300%;
-}
-
 timelineAndTimer {
     width: 95vw;
     display: flex;
