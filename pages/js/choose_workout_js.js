@@ -144,6 +144,7 @@ async function setDailyWorkout() {
 
   if (response.ok) {
     console.log('huzzar!');
+    window.location.href = '/workout.html';
   } else {
     console.log('failed to send message');
   }
