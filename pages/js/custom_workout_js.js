@@ -118,17 +118,22 @@ function refreshTimeline() {
   updateSelected();
 }
 
-function addToWorkout(elem) {
-  let _class = '';
-  if (elem.target.classList[elem.target.classList.length - 1] === 'workoutHard') {
-    _class = 'intense';
-  } else {
-    _class = 'rest';
+function timelineNameToObject(_name) {
+  for (let i = 0; i < exerciseList.length; i++) {
+    if (exerciseList[i].name === _name) {
+      return exerciseList[i];
+    }
   }
+  return 'no exercise fits that name';
+}
+
+function addToWorkout(elem) {
+  const exerciseObject = timelineNameToObject(elem.target.textContent);
 
   timelineList.splice((timelineOffset + timelinePointer + 1), 0, {
-    name: elem.target.textContent,
-    difficulty: _class,
+    name: exerciseObject.name,
+    difficulty: exerciseObject.difficulty,
+    description: exerciseObject.description,
   });
 
   // when selected position is already where the new exercise would go. therefore incrementing pointer would move selection to the right of new exercise
@@ -257,10 +262,13 @@ function finaliseExercise() {
   const finalExerciseList = [];
   let j = 0;
 
+  console.log(timelineList);
+
   finalExerciseList.push({
     name: timelineList[0].name,
     duration: 30,
     difficulty: timelineList[0].difficulty,
+    description: timelineList[0].description,
   });
 
   for (let i = 1; i < timelineList.length; i++) {
@@ -271,6 +279,7 @@ function finaliseExercise() {
         name: timelineList[i].name,
         duration: 30,
         difficulty: timelineList[i].difficulty,
+        description: timelineList[i].description,
       });
 
       j += 1;
@@ -340,7 +349,7 @@ async function submitWorkout() {
   });
 
   if (response.ok) {
-    window.location.href = 'choose_workout.html';
+    // window.location.href = 'choose_workout.html';
     console.log('huzzar!');
   } else {
     console.log('failed to send message');

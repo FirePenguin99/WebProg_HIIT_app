@@ -28,7 +28,7 @@ async function loadWorkout() {
 
   document.querySelector('#exercise_name').textContent = '"' + currentWorkout.name + '"';
   document.title = 'Workout: ' + currentWorkout.name;
-  document.querySelector('#description').textContent = currentWorkout.description;
+  // document.querySelector('#description').textContent = currentWorkout.description;
 
   updateExercise();
 }
@@ -61,6 +61,9 @@ function stopExercise() {
 
 function updateExercise() {
   exerciseRef.textContent = currentWorkout.exercises[currentExerciseCount].name + ' for ' + currentWorkout.exercises[currentExerciseCount].duration + ' seconds';
+
+  document.querySelector('#description').textContent = currentWorkout.exercises[currentExerciseCount].description;
+  console.log(currentWorkout.exercises[currentExerciseCount].description);
 
   exerciseRef.classList.remove(exerciseRef.classList[1]);
 
