@@ -6,14 +6,16 @@ let currentExerciseTime = 0;
 let timerState = 'paused';
 
 const buttonRef = document.querySelector('#startAndStop');
-const exerciseRef = document.querySelector('.exercise');
+const exerciseRef = document.querySelector('#exercise');
 const timerRef = document.querySelector('#timer');
+const progressBarRef = document.querySelector('#progressBar');
+const upNextRef = document.querySelector('#nextExercise');
 
 async function loadWorkout() {
   const name = window.location.hash.substring(1);
   console.log(name);
 
-  const currentUserId = sessionStorage.getItem('userId'); // make this use SessionStorage
+  const currentUserId = sessionStorage.getItem('userId');
 
   const response = await fetch('workout/' + currentUserId + '-' + name);
 
@@ -28,9 +30,9 @@ async function loadWorkout() {
 
   document.querySelector('#exercise_name').textContent = '"' + currentWorkout.name + '"';
   document.title = 'Workout: ' + currentWorkout.name;
-  // document.querySelector('#description').textContent = currentWorkout.description;
 
   updateExercise();
+  updateUpNextExercise();
 }
 
 function startAndStop() {
@@ -65,13 +67,17 @@ function updateExercise() {
   document.querySelector('#description').textContent = currentWorkout.exercises[currentExerciseCount].description;
   console.log(currentWorkout.exercises[currentExerciseCount].description);
 
-  exerciseRef.classList.remove(exerciseRef.classList[1]);
+  exerciseRef.classList.remove(exerciseRef.classList[0]);
 
   if (currentWorkout.exercises[currentExerciseCount].difficulty === 'rest') {
     exerciseRef.classList.add('workoutEasy');
-  } else {
+  } else if (currentWorkout.exercises[currentExerciseCount].difficulty === 'intense') {
     exerciseRef.classList.add('workoutHard');
+  } else {
+    exerciseRef.classList.add('workoutNone');
   }
+
+  updateTimer();
 }
 
 function nextExercise() {
@@ -83,9 +89,25 @@ function nextExercise() {
   } else {
     currentExerciseTime = 0;
     updateExercise();
+    updateUpNextExercise();
   }
 }
+function updateUpNextExercise() {
+  if (!currentWorkout.exercises[currentExerciseCount + 1]) {
+    upNextRef.textContent = 'None';
+    upNextRef.classList.add('workoutNone');
+  } else {
+    upNextRef.textContent = currentWorkout.exercises[currentExerciseCount + 1].name + ' for ' + currentWorkout.exercises[currentExerciseCount + 1].duration + ' seconds';
 
+    upNextRef.classList.remove(upNextRef.classList[0]);
+
+    if (currentWorkout.exercises[currentExerciseCount + 1].difficulty === 'rest') {
+      upNextRef.classList.add('workoutEasy');
+    } else {
+      upNextRef.classList.add('workoutHard');
+    }
+  }
+}
 
 function incrementTime() {
   if (workoutTime >= currentWorkout.seconds) {
@@ -98,6 +120,7 @@ function incrementTime() {
   console.log(currentExerciseTime);
 
   updateTimer();
+  updateProgressBar();
 
   if (currentExerciseTime === currentWorkout.exercises[currentExerciseCount].duration) {
     nextExercise();
@@ -108,18 +131,27 @@ function incrementTime() {
   }
 }
 
-function updateTimer() {
-  let frontTimerValue = Math.floor(workoutTime / 60);
+function secondsIntoMinuteFormat(seconds) {
+  let frontTimerValue = Math.floor(seconds / 60);
   if ((frontTimerValue + '').length === 1) {
     frontTimerValue = '0' + frontTimerValue;
   }
 
-  let backTimerValue = workoutTime % 60;
+  let backTimerValue = seconds % 60;
   if ((backTimerValue + '').length === 1) {
     backTimerValue = '0' + backTimerValue;
   }
 
-  timerRef.textContent = frontTimerValue + ':' + backTimerValue;
+  return frontTimerValue + ':' + backTimerValue;
+}
+
+function updateTimer() {
+  timerRef.textContent = secondsIntoMinuteFormat(workoutTime) + '/' + secondsIntoMinuteFormat(currentWorkout.seconds);
+}
+
+function updateProgressBar() {
+  const percentOfCurrentExercise = currentExerciseTime / currentWorkout.exercises[currentExerciseCount].duration * 100;
+  progressBarRef.style.width = percentOfCurrentExercise + '%';
 }
 
 loadWorkout();

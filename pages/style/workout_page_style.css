@@ -4,7 +4,9 @@
 
 h1 {
     width: 80vw;
-    margin-top: 5%;
+    /* margin-top: 5%; */
+    margin-top: 4vh;
+    margin-bottom: 4vh;
 }
 
 p {
@@ -14,42 +16,75 @@ p {
     margin: auto;
 }
 
-/* character */
-#character {
-    height: 20vh;
-}
-
-
 /* name of exercise display */
 #exercise_display {
-    height: 15vh;
+    margin-bottom: 2.5vh;
 }
-.exercise {
+#exercise {
     border-width: 1vw;
-    background-color: lightgray;
     height: 10vh;
     width: 80%;
     font-size: 500%;
+    
+    margin-top: 5vh;
+    margin-bottom: 0vh;
 }
-
 #description {
     font-size: 2.5rem;
     background-color: white;
     margin: 2vh;
-    margin-top: 0;
-    margin-bottom: 3vh;
+    margin-top: 1.5vh;
+    margin-bottom: 1.5vh;
     text-wrap: wrap;
     word-break: break-word;
+}
+
+#progress {
+    border-radius: 5vw;
+
+    width: 70vw;
+    height: 5vh;
+    background-color: white;
+}
+#progressBar {
+    border-radius: 5vw;
+
+    background-color: lime;
+    height: 5vh;
+    width: 0%;
+    margin: 0;
+}
+
+#upNextDisplay{
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+}
+#upNext{
+    background-color: white;
+    width: max-content;
+}
+#nextExercise {
+    border-width: 1vw;
+    /* background-color: lightgray; */
+    height: 8vh;
+    width: 64%;
+    font-size: 400%;
+    
+    margin-top: 1vh;
+    margin-bottom: 1vh;
 }
 
 
 /* timer elem */
 #timer {
     background-color: white;
-    width: 50vw;
-    height: 6.5vh;
+    width: max-content;
+    padding-right: 2vw;
+    padding-left: 2vw;
     border-radius: 5vw;
     font-size: 600%;
+    margin-top: 1.5vh;
+    margin-bottom: 1.5vh;
 }
 
 
@@ -60,7 +95,6 @@ p {
     font-size: 800%;
     border-radius: 10vw;
     border: none;
-    margin-top: 5vh;
 }
 .start {
     background: greenyellow;
@@ -78,4 +112,7 @@ p {
 }
 .workoutHard {
     background-color: red;
+}
+.workoutNone {
+    background-color: lightgrey;
 }
