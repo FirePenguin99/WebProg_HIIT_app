@@ -157,7 +157,7 @@ async function workoutOver() {
       dailyTimeout = new Date(Date.now() + 86400000);
     } else {
       // add 12 hours
-      dailyTimeout = new Date(Date.now() + 3600000);
+      dailyTimeout = new Date(Date.now() + 43200000);
     }
 
     console.log(new Date(dailyTimeout));
