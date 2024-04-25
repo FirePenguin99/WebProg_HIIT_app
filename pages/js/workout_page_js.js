@@ -5,6 +5,8 @@ let workoutTime = 0;
 let currentExerciseTime = 0;
 let timerState = 'paused';
 
+let isDaily = false;
+
 const buttonRef = document.querySelector('#startAndStop');
 const exerciseRef = document.querySelector('#exercise');
 const timerRef = document.querySelector('#timer');
@@ -12,7 +14,18 @@ const progressBarRef = document.querySelector('#progressBar');
 const upNextRef = document.querySelector('#nextExercise');
 
 async function loadWorkout() {
-  const name = window.location.hash.substring(1);
+  const url = window.location.hash.substring(1);
+  console.log(url);
+
+  let name = '';
+
+  if (url.includes('daily/')) {
+    name = (url.split('/'))[1];
+    isDaily = true;
+  } else {
+    name = url;
+  }
+
   console.log(name);
 
   const currentUserId = sessionStorage.getItem('userId');
@@ -111,6 +124,7 @@ function updateUpNextExercise() {
 
 function incrementTime() {
   if (workoutTime >= currentWorkout.seconds) {
+    workoutOver();
     return;
   }
 
@@ -128,6 +142,44 @@ function incrementTime() {
 
   if (timerState === 'started') {
     setTimeout(incrementTime, 1000);
+  }
+}
+
+async function workoutOver() {
+  if (isDaily) {
+    let dailyTimeout;
+
+    if (currentWorkout.difficulty === 'hard') {
+      // add 48 hours
+      dailyTimeout = new Date(Date.now() + 172800000);
+    } else if (currentWorkout.difficulty === 'medium') {
+      // add 24 hours
+      dailyTimeout = new Date(Date.now() + 86400000);
+    } else {
+      // add 12 hours
+      dailyTimeout = new Date(Date.now() + 3600000);
+    }
+
+    console.log(new Date(dailyTimeout));
+
+    const payload = {
+      id: sessionStorage.getItem('userId'),
+      daily: currentWorkout.name,
+      timeCooldown: dailyTimeout,
+    };
+
+    const response = await fetch('daily', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+
+    if (response.ok) {
+      console.log('huzzar!');
+      window.location.href = '/workout.html';
+    } else {
+      console.log('failed to send message');
+    }
   }
 }
 

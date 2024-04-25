@@ -330,10 +330,20 @@ function getUserDailyWorkout(req, res) {
 
 // sets a user's daily workout
 function setUserDailyWorkout(req, res) {
+  let timeout;
+
+  if (req.body.timeCooldown != null) {
+    timeout = req.body.timeCooldown;
+  } else {
+    timeout = null;
+  }
+
   userList[findIndexWithId(req.body.id)].daily = {
     workoutName: req.body.daily,
-    timeCooldown: null,
+    timeCooldown: timeout,
   };
+
+  console.log(userList[findIndexWithId(req.body.id)]);
 
   res.end();
 }

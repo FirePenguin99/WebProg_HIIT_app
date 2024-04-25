@@ -32,7 +32,7 @@ function displayDailyWorkout() {
     if (newDate < Date.now()) { // when the cooldown doesn't exist or it is over
       dailyWorkoutElem.classList.remove('greyedOut');
       dailyWorkoutElem.textContent = 'Daily: ' + dailyWorkout.workoutName;
-      dailyWorkoutElem.href = `/workout_page.html#${dailyWorkout.workoutName}`;
+      dailyWorkoutElem.href = `/workout_page.html#${'daily/' + dailyWorkout.workoutName}`;
     } else { // when the cooldown has not yet finished
       refreshDailyTimer(newDate);
       dailyWorkoutElem.classList.add('greyedOut');
