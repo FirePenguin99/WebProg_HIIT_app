@@ -14,7 +14,7 @@ async function loadUserList() {
 }
 
 function createUserElems() {
-  for (let i = 0; i < userList.length; i++) {
+  for (let i = 1; i < userList.length; i++) { // i = 1 as userlist[0] is the Guest login user
     const userElem = document.createElement('div');
     const usernameElem = document.createElement('p');
 

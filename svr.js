@@ -86,6 +86,14 @@ const defaultExercises = [
 
 const userList = [
   {
+    id: '0000',
+    username: 'Guest',
+    daily: null,
+    workouts: [
+    ],
+    exercises: defaultExercises,
+  },
+  {
     id: '0001', // this should probably use UUID
     username: 'dude',
     daily: {
