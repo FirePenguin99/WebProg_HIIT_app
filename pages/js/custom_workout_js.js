@@ -14,6 +14,8 @@ let pageNumber = 0;
 const timerElem = document.querySelector('#timer');
 let timerValue = 0;
 
+let newExerciseDifficultyChoice = 'rest';
+
 async function loadUserExercises() {
   exerciseList = [];
   const response = await fetch('exercises/' + sessionStorage.getItem('userId'));
@@ -363,10 +365,28 @@ function loadResponseExercises(resExercises) {
   refreshList();
 }
 
+function setExerciseDifficulty(difficulty) {
+  newExerciseDifficultyChoice = difficulty;
+  selectExerciseDifficulty();
+}
+
+function selectExerciseDifficulty() {
+  const intenseButtonRef = document.querySelector('#intenseButton');
+  const restButtonRef = document.querySelector('#restButton');
+
+  if (newExerciseDifficultyChoice === 'intense') {
+    intenseButtonRef.classList.remove('unselected');
+    restButtonRef.classList.add('unselected');
+  } else {
+    intenseButtonRef.classList.add('unselected');
+    restButtonRef.classList.remove('unselected');
+  }
+}
+
 async function createExercise() { // make this use the response from the POST to refresh the exercise list, rather than re-GETing the exercises from the server
   const exerciseName = document.querySelector('#submitExerciseName').value;
   const exerciseDescription = document.querySelector('#submitExerciseDescription').value;
-  const exerciseDifficulty = document.querySelector('#submitExerciseDifficulty').value;
+  const exerciseDifficulty = newExerciseDifficultyChoice;
 
   const finalObj = {
     name: exerciseName,
@@ -393,6 +413,7 @@ async function createExercise() { // make this use the response from the POST to
     const resExerciseList = await response.json();
     loadResponseExercises(resExerciseList);
     pageNumber = 0;
+    refreshList();
     closeSubmit('#newExerciseBox');
   } else {
     console.log('failed to send message');
@@ -421,6 +442,9 @@ document.querySelector('#submitDone').addEventListener('click', submitWorkout);
 
 
 document.querySelector('#createExercise').addEventListener('click', () => { openSubmit('#newExerciseBox'); });
+
+document.querySelector('#restButton').addEventListener('click', () => { setExerciseDifficulty('rest'); });
+document.querySelector('#intenseButton').addEventListener('click', () => { setExerciseDifficulty('intense'); });
 
 document.querySelector('#submitExerciseBack').addEventListener('click', () => { closeSubmit('#newExerciseBox'); });
 document.querySelector('#submitExerciseDone').addEventListener('click', createExercise);

@@ -180,3 +180,28 @@ timelineAndTimer {
     height: 40vh;
     background-color: white;
 }
+
+/* #intenseOrRest {
+    display: flex;
+    justify-content: space-evenly;
+} */
+
+#restButton {
+    border: solid black 5px;
+    width: 25vw;
+}
+#intenseButton {
+    border: solid black 5px;
+    width: 25vw;
+}
+
+.selectedIntense {
+    background-color: red;
+}
+.selectedRest {
+    background-color: yellow;
+}
+
+.unselected {
+    background-color: grey;
+}
