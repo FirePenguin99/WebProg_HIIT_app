@@ -1,3 +1,5 @@
+import * as hist from './history_mjs.mjs';
+
 let dailyWorkout;
 
 const dailyWorkoutElem = document.querySelector('#daily_workout');
@@ -79,3 +81,6 @@ function refreshDailyTimer(time) {
 setHeadingName();
 
 loadDailyWorkout();
+
+hist.pushHistoryStack(window.location.href);
+document.querySelector('#back_button').addEventListener('click', () => { hist.getBackUrl(); });

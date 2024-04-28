@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <title>Choose Workout</title>
-<script defer src="js/choose_workout_js.js" defer></script>
+<script defer type="module" src="js/choose_workout_js.js" defer></script>
 <link rel="stylesheet" href="style/index_style.css">
 <link rel="stylesheet" href="style/choose_workout_style.css">
 
@@ -22,9 +22,10 @@
 <a id="custom_workout" class="anchorButton" href='custom_workout.html'>Or make your own!</a>
 
 <section id="navigation"> 
-    <button onclick="history.back()"> Back </button>
+    <button id="back_button"> Back </button>
     <a id="home_button" href="homepage.html"> Home </a>
 </section>
+
 
 <div id="settingsContainer" class="hidden">
     <div id="settingsBox">

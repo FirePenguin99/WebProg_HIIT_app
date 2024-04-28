@@ -1,3 +1,5 @@
+import * as hist from './history_mjs.mjs';
+
 const timelineElem = document.querySelector('#timeline');
 const timelineList = [];
 
@@ -419,6 +421,9 @@ async function createExercise() { // make this use the response from the POST to
     console.log('failed to send message');
   }
 }
+
+hist.pushHistoryStack(window.location.href);
+document.querySelector('#back_button').addEventListener('click', () => { hist.getBackUrl(); });
 
 loadUserExercises();
 

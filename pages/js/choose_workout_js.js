@@ -1,3 +1,5 @@
+import * as hist from './history_mjs.mjs';
+
 let workoutList = [];
 
 let pageNumber = 0;
@@ -149,6 +151,9 @@ async function setDailyWorkout() {
     console.log('failed to send message');
   }
 }
+
+hist.pushHistoryStack(window.location.href);
+document.querySelector('#back_button').addEventListener('click', () => { hist.getBackUrl(); });
 
 loadUserWorkouts();
 

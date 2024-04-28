@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <title>Let's Get Moving!</title> 
-<!-- maybe make the title of the page dynamic depending on what workout is loaded??? -->
-<script defer src="js/workout_page_js.js" defer></script>
+<script defer type="module" src="js/workout_page_js.js" defer></script>
 <link rel="stylesheet" href="style/index_style.css">
 <link rel="stylesheet" href="style/workout_page_style.css">
 
-<!-- <h1>Let's Get Moving!</h1>  -->
-<!-- use JS to change the textContent of this to a name in storage (.txt) -->
 <h1 id="exercise_name">name of workout</h1>
 
 
@@ -31,6 +28,6 @@
 <button id="startAndStop" class="start">Begin!</button>
 
 <section id="navigation"> 
-    <button onclick="history.back()"> Back </button>
+    <button id="back_button"> Back </button>
     <a id="home_button" href="homepage.html"> Home </a>
 </section>

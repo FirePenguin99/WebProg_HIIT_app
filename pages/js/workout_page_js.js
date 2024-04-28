@@ -1,3 +1,5 @@
+import * as hist from './history_mjs.mjs';
+
 let currentWorkout;
 
 let currentExerciseCount = 0;
@@ -205,6 +207,9 @@ function updateProgressBar() {
   const percentOfCurrentExercise = currentExerciseTime / currentWorkout.exercises[currentExerciseCount].duration * 100;
   progressBarRef.style.width = percentOfCurrentExercise + '%';
 }
+
+hist.pushHistoryStack(window.location.href);
+document.querySelector('#back_button').addEventListener('click', () => { hist.getBackUrl(); });
 
 loadWorkout();
 
