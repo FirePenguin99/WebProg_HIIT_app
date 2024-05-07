@@ -102,39 +102,40 @@ const userList = [
     },
     workouts: [
       {
-        name: 'Workout Sprinting',
-        seconds: 3 * 60,
+        name: 'Workout 1',
+        seconds: 1 * 60,
         difficulty: 'medium',
         exercises: [
           {
-            name: 'sprint',
-            description: 'sprint',
+            name: 'X Jumps',
             duration: 0.5 * 60,
-            difficulty: 'hard',
+            description: 'Close your body and bend your knees, then explode into a jump and spread all your limbs outwards. Then Repeat',
+            difficulty: 'intense',
           },
           {
-            name: 'light jog',
-            description: 'light jog',
-            duration: 2 * 60,
-            difficulty: 'easy',
-          },
-          {
-            name: 'sprint',
-            description: 'sprint',
+            name: 'Rest',
             duration: 0.5 * 60,
-            difficulty: 'hard',
+            description: 'No activity, just rest for the moment',
+            difficulty: 'rest',
           },
         ],
       },
       {
-        name: 'Workout 2',
+        name: 'Workout Hard',
         seconds: 1 * 60,
         difficulty: 'hard',
         exercises: [
           {
-            name: 'Sit-ups',
-            duration: 1 * 60,
-            difficulty: 'hard',
+            name: 'X Jumps',
+            duration: 0.5 * 60,
+            description: 'Close your body and bend your knees, then explode into a jump and spread all your limbs outwards. Then Repeat',
+            difficulty: 'intense',
+          },
+          {
+            name: 'Frog Jumps',
+            duration: 0.5 * 60,
+            description: 'Start with knees bent, squating and hands on the floor between your legs. Then do a small jump and upon landing reset to starting position and repeat',
+            difficulty: 'intense',
           },
         ],
       },
@@ -166,23 +167,6 @@ const userList = [
       timeCooldown: new Date('04/16/2024 16:00:00'),
     },
     workouts: [
-      {
-        name: 'Workout 3',
-        seconds: 1 * 60,
-        difficulty: 'medium',
-        exercises: [
-          {
-            name: 'jumping-jacks',
-            duration: 0.5 * 60,
-            difficulty: 'medium',
-          },
-          {
-            name: 'burpees',
-            duration: 0.5 * 60,
-            difficulty: 'hard',
-          },
-        ],
-      },
     ],
     exercises: defaultExercises,
   },
