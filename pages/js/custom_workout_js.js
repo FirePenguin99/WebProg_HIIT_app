@@ -240,8 +240,8 @@ function searchNameAndIntensity() {
   const searchedExerciseList = [];
 
   for (let i = 0; i < exerciseList.length; i++) {
-    if ((exerciseList[i].difficulty).includes(intensityValue)) {
-      if ((exerciseList[i].name).includes(nameValue)) {
+    if ((exerciseList[i].difficulty.toLowerCase()).includes(intensityValue)) {
+      if ((exerciseList[i].name.toLowerCase()).includes(nameValue)) {
         searchedExerciseList.push(exerciseList[i]);
       }
     }
