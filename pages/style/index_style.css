@@ -1,5 +1,7 @@
 body {
     background: #ffe599;
+    /* width: 600px; */
+    max-width: 980px;
 }
 
 * {
