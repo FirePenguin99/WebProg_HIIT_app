@@ -68,7 +68,7 @@ button {
 
 /* bottom bar navigation elems */
 #navigation {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     display: flex;
     height: 10rem;
@@ -86,6 +86,11 @@ button {
     padding: 0 0;
     text-align: center;
     margin: auto;
+}
+
+/* element that adds some blank space to the bottom of the page so that the nav bar doesn't hide anything */
+#nav_gap {
+    height: 10rem;
 }
 
 label {
