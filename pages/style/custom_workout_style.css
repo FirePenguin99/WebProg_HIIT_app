@@ -4,7 +4,7 @@
 
 
 h1 {
-    width: 80vw;
+    width: 80%;
     margin-top: 5%;
 }
 
@@ -12,7 +12,7 @@ p {
     border-style: solid;
     border-color: black;
     font-size: 300%;
-    /* margin: auto;    */
+    /* margin: auto; */
 }
 
 
@@ -24,10 +24,10 @@ input {
 }
 
 timelineAndTimer {
-    width: 95vw;
+    width: 95%;
     display: flex;
-    margin-top: 1.5vh;
-    margin-bottom: 1.5vh;
+    margin-top: 1.5%;
+    margin-bottom: 1.5%;
 }
 
 
@@ -41,22 +41,18 @@ timelineAndTimer {
 }
 
 
-/* character */
-#character {
-    height: 10vh;
-}   
-
-
 /* timeline */
 #timeline {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: auto;
-    width: 90vw;
+    width: 90%;
+    height: 10rem;
+    margin-bottom: 0.5rem;
 }
 .timelineExercise {
-    width: 22vw;
-    height: 7.5vh;
+    width: 100%;
+    height: 100%;
     background: repeating-linear-gradient(
         45deg,
         white,
@@ -64,6 +60,7 @@ timelineAndTimer {
         grey 20px
     );
 }
+
 
 /* workouts, KEEP THIS UNDER ".timelineExercise". There's some weird heirarchy system that overwrites one another depending on their placement in the CSS */
 .workoutEasy {
@@ -75,8 +72,8 @@ timelineAndTimer {
 
 /* for Prev 30s and More 30s buttons */
 .button_exercise_list {
-    height: 5vh;
-    width: 45vw;
+    height: 7rem;
+    width: 45%;
     font-size: 350%;
     justify-content: space-evenly;
 }
@@ -87,17 +84,16 @@ timelineAndTimer {
     margin: auto;
     text-decoration: none;
     color: black;
-    width: 45vw;
-    height: 6.5vh;
-    border-radius: 5vw;
+    width: 45%;
+    height: 6.5%;
+    border-radius: 40px;
     font-size: 600%;
     background-color: red;
 }
 #timer {
     background-color: white;
-    width: 45vw;
-    height: 6.5vh;
-    border-radius: 5vw;
+    width: 45%;
+    height: 6.5%;
     font-size: 600%;
 }
 
@@ -107,12 +103,13 @@ timelineAndTimer {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto;
-    width: 90vw;
+    width: 90%;
+    height: 7.5rem;
 }
 .exerciseTable {
     background-color: lightgrey;
-    height: 5vh;
-    width: 44vw;
+    height: 100%;
+    width: 100%;
 }
 
 
@@ -123,19 +120,20 @@ timelineAndTimer {
     margin: auto;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto;
-    height: 32vh;
-    width: 90vw;
+    height: 45rem;
+    /* height: 40vh; */
+    width: 90%;
 }
 .exerciseItem {
-    width: 40vw;
-    height: 6vh;
+    width: 90%;
+    height: 8.5rem;
 }
 
 
 /* for list Back, create new exercise and list More buttons */
 .button_workout_list {
-    height: 5vh;
-    width: 30vw;
+    height: 7rem;
+    width: 30%;
     font-size: 350%;
     justify-content: space-evenly;
 }
@@ -143,11 +141,11 @@ timelineAndTimer {
 
 /* for pop-up submit box */
 #submit {
-    margin-top: 1vh;
+    margin-top: 2.5rem;
     background: greenyellow;
-    width: 50vw;
-    height: 6.5vh;
-    border-radius: 5vw;
+    width: 50%;
+    height: 10rem;
+    border-radius: 60px;
     font-size: 600%;
 }
 #submitForm {
@@ -161,8 +159,8 @@ timelineAndTimer {
     position: fixed;
     left: 10%;
     top: 30%;
-    width: 80vw;
-    height: 40vh;
+    width: 80%;
+    height: 40%;
     background-color: white;
 }
 #newExerciseForm {
@@ -176,8 +174,8 @@ timelineAndTimer {
     position: fixed;
     left: 10%;
     top: 30%;
-    width: 80vw;
-    height: 40vh;
+    width: 80%;
+    height: 40%;
     background-color: white;
 }
 
@@ -188,11 +186,11 @@ timelineAndTimer {
 
 #restButton {
     border: solid black 5px;
-    width: 25vw;
+    width: 25%;
 }
 #intenseButton {
     border: solid black 5px;
-    width: 25vw;
+    width: 25%;
 }
 
 .selectedIntense {
