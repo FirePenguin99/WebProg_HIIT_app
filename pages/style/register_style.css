@@ -1,8 +1,8 @@
 .inputField {
     margin-top: 20%;
     background: white;
-    padding: 2.5vh;
-    width: 80vw;
+    padding: 2.5rem;
+    width: 80%;
 }
 
 button {
@@ -10,9 +10,8 @@ button {
 }
 
 input {
-    border-radius: 1vw;
-    width: 75vw;
-    height: 2.5vh;
+    border-radius: 40px;
+    width: 100%;
     font-size: 300%;
     border: solid 0.25em grey;
 }

@@ -1,12 +1,12 @@
 * {
-    border-radius: 0vw;
+    border-radius: 0px;
 }
 
 h1 {
-    width: 80vw;
+    width: 80%;
     /* margin-top: 5%; */
-    margin-top: 4vh;
-    margin-bottom: 4vh;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
 }
 
 p {
@@ -18,60 +18,54 @@ p {
 
 /* name of exercise display */
 #exercise_display {
-    margin-bottom: 2.5vh;
+    margin-bottom: 3rem;
 }
 #exercise {
-    border-width: 1vw;
-    height: 10vh;
+    border-width: 5px;
+    height: 13rem;
     width: 80%;
     font-size: 500%;
-    
-    margin-top: 5vh;
-    margin-bottom: 0vh;
 }
 #description {
     font-size: 2.5rem;
     background-color: white;
-    margin: 2vh;
-    margin-top: 1.5vh;
-    margin-bottom: 1.5vh;
+    margin: 4rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
     text-wrap: wrap;
     word-break: break-word;
 }
 
 #progress {
-    border-radius: 5vw;
-
-    width: 70vw;
-    height: 5vh;
+    border-radius: 50px;
+    height: 7.5rem;
+    width: 70%;
     background-color: white;
 }
 #progressBar {
-    border-radius: 5vw;
+    border-radius: 50px;
 
     background-color: lime;
-    height: 5vh;
+    height: 100%;
     width: 0%;
     margin: 0;
 }
 
 #upNextDisplay{
-    margin-top: 5vh;
-    margin-bottom: 5vh;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
 }
 #upNext{
     background-color: white;
     width: max-content;
 }
 #nextExercise {
-    border-width: 1vw;
-    /* background-color: lightgray; */
-    height: 8vh;
-    width: 64%;
+    border-width: 5px;
+    width: 65%;
     font-size: 400%;
     
-    margin-top: 1vh;
-    margin-bottom: 1vh;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
 
@@ -79,21 +73,21 @@ p {
 #timer {
     background-color: white;
     width: max-content;
-    padding-right: 2vw;
-    padding-left: 2vw;
-    border-radius: 5vw;
+    padding-right: 5%;
+    padding-left: 5%;
+    border-radius: 50px;
     font-size: 600%;
-    margin-top: 1.5vh;
-    margin-bottom: 1.5vh;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
 }
 
 
 /* start and stop/pause exercise buttons */
 #startAndStop {
-    width: 85vw;
-    height: 12vh;
+    width: 85%;
+    height: 15rem;
     font-size: 800%;
-    border-radius: 10vw;
+    border-radius: 100px;
     border: none;
 }
 .start {

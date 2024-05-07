@@ -1,9 +1,9 @@
 * {
-    border-radius: 0vw;
+    border-radius: 0px;
 }
 
 h1 {
-    width: 80vw;
+    width: 80%;
     margin-top: 5%;
 }
 
@@ -23,8 +23,8 @@ main {
     margin: auto;
     grid-template-columns: 2fr 1fr 0.75fr;
     grid-template-rows: auto;
-    height: 52vh;
-    width: 80vw;
+    height: 72rem;
+    width: 80%;
 }
 
 p {
@@ -32,21 +32,14 @@ p {
     border-color: darkgrey;
     font-size: 300%;
     margin: 0%;
-    height: 6.5vh;
-}
-
-
-
-/* character */
-#character {
-    height: 10vh;
+    height: 9rem;
 }
 
 
 /* workouts */
 .workoutTable {
     background-color: lightgrey;
-    height: 5vh;
+    height: 7rem;
 }
 
 .workoutEmpty {
@@ -71,7 +64,6 @@ p {
     border-color: darkgrey;
     font-size: 300%;
     margin: 0%;
-    height: 6.5vh;
 }
 .workoutMedium {
     background-color: orange;
@@ -79,7 +71,6 @@ p {
     border-color: darkgrey;
     font-size: 300%;
     margin: 0%;
-    height: 6.5vh;
 }
 .workoutHard {
     background-color: red;
@@ -87,7 +78,6 @@ p {
     border-color: darkgrey;
     font-size: 300%;
     margin: 0%;
-    height: 6.5vh;
 }
 
 
@@ -95,20 +85,21 @@ p {
 /* list navigation buttons */
 #backAndMore {
     display: flex;
-    width: 80vw;
+    width: 80%;
 }
 
 .button_workout_list {
-    height: 5vh;
-    width: 45vw;
+    height: 7rem;
+    width: 50%;
     font-size: 350%;
     justify-content: space-evenly;
 }
 
+
 /* anchors that work and act like buttons */
 .anchorButton {
     padding: 5%;
-    border-radius: 10vw;
+    border-radius: 100px;
     font-size: 500%;
     background: white;
     display: grid;
@@ -133,7 +124,7 @@ p {
     position: fixed;
     left: 10%;
     top: 30%;
-    width: 80vw;
-    height: 40vh;
+    width: 80%;
+    height: 50rem;
     background-color: white;
 }
