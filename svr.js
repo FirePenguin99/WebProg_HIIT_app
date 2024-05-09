@@ -84,6 +84,7 @@ const defaultExercises = [
   },
 ];
 
+// where all the user and workout data is stored
 const userList = [
   {
     id: '0000',
@@ -91,13 +92,13 @@ const userList = [
     daily: null,
     workouts: [
     ],
-    exercises: defaultExercises,
+    exercises: [...defaultExercises], // this is to set .exercises to a clone of defaultExercises, rather than a reference. This stops other users seeing each other custom exercises
   },
   {
     id: '0001', // this should probably use UUID
     username: 'dude',
     daily: {
-      workoutName: 'Workout Sprinting', // this really should be a Unique ID that references an existing Workout inside the user's workouts array
+      workoutName: 'Workout 1', // this really should be a Unique ID that references an existing Workout inside the user's workouts array
       timeCooldown: new Date('11/21/1987 16:00:00'), // the time Date where the daily workout can be accessed again
     },
     workouts: [
@@ -157,18 +158,37 @@ const userList = [
         ],
       },
     ],
-    exercises: defaultExercises,
+    exercises: [...defaultExercises],
   },
   {
     id: '0002',
     username: 'bloke',
     daily: {
-      workoutName: 'Workout 3',
-      timeCooldown: new Date('04/16/2024 16:00:00'),
+      workoutName: 'Workout Hard',
+      timeCooldown: new Date('05/13/2024 16:00:00'),
     },
     workouts: [
+      {
+        name: 'Workout Hard',
+        seconds: 1 * 60,
+        difficulty: 'hard',
+        exercises: [
+          {
+            name: 'X Jumps',
+            duration: 0.5 * 60,
+            description: 'Close your body and bend your knees, then explode into a jump and spread all your limbs outwards. Then Repeat',
+            difficulty: 'intense',
+          },
+          {
+            name: 'Frog Jumps',
+            duration: 0.5 * 60,
+            description: 'Start with knees bent, squating and hands on the floor between your legs. Then do a small jump and upon landing reset to starting position and repeat',
+            difficulty: 'intense',
+          },
+        ],
+      },
     ],
-    exercises: defaultExercises,
+    exercises: [...defaultExercises],
   },
   {
     id: '0003',
@@ -176,7 +196,7 @@ const userList = [
     daily: null,
     workouts: [
     ],
-    exercises: defaultExercises,
+    exercises: [...defaultExercises],
   },
 ];
 
@@ -224,7 +244,7 @@ function createNewUserObj(inputUsername) {
     username: inputUsername,
     daily: null,
     workouts: [],
-    exercises: defaultExercises,
+    exercises: [...defaultExercises],
   });
   return newId;
 }
@@ -243,6 +263,7 @@ function returnUserDailyWorkout(id) {
   return userList[findIndexWithId(id)].daily;
 }
 
+// finds workout object using its name
 function findWorkoutObjWithWorkoutName(workoutName, workoutArray) {
   for (let i = 0; i < workoutArray.length; i++) {
     if (workoutArray[i].name === workoutName) {

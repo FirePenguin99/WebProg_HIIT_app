@@ -130,6 +130,8 @@ function incrementTime() {
     return;
   }
 
+  document.querySelector('#tickingSound').play();
+
   workoutTime += 1;
   currentExerciseTime += 1;
 

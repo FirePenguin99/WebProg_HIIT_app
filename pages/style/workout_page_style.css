@@ -110,3 +110,7 @@ p {
 .workoutNone {
     background-color: lightgrey;
 }
+
+.hidden {
+    display: none;
+}

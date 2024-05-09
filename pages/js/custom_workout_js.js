@@ -41,53 +41,8 @@ function parseExercises(obj) {
   refreshList();
 }
 
-function populateExercises() {
-  for (let i = 0 + (pageNumber * 8); i < (pageNumber + 1) * 8; i++) {
-    const exerciseElem = document.createElement('p');
-    exerciseElem.classList.add('exerciseItem');
 
-    if (i <= displayedExerciseList.length - 1) {
-      exerciseElem.textContent = displayedExerciseList[i].name;
-
-      if (displayedExerciseList[i].difficulty === 'rest') {
-        exerciseElem.classList.add('workoutEasy');
-      } else {
-        exerciseElem.classList.add('workoutHard');
-      }
-
-      exerciseElem.addEventListener('click', addToWorkout);
-    }
-
-    exerciseListElem.append(exerciseElem);
-  }
-}
-
-function refreshList() {
-  const numberOfNodes = exerciseListElem.children.length;
-
-  // clear list
-  for (let i = 0; i < numberOfNodes; i++) {
-    console.log('cleared list');
-    exerciseListElem.removeChild(exerciseListElem.children[0]);
-  }
-
-  populateExercises();
-}
-
-function incrementPage() {
-  if (displayedExerciseList[((pageNumber + 1) * 8)]) {
-    pageNumber += 1;
-    refreshList();
-  }
-}
-function decrementPage() {
-  if (pageNumber > 0) {
-    pageNumber -= 1;
-    refreshList();
-  }
-}
-
-
+// functions pertaining to the timeline section
 function populateTimeline() {
   for (let i = timelineOffset; i < timelineOffset + 4; i++) {
     const exerciseElem = document.createElement('p');
@@ -108,7 +63,6 @@ function populateTimeline() {
     timelineElem.append(exerciseElem);
   }
 }
-
 function refreshTimeline() {
   const numberOfNodes = timelineElem.children.length;
 
@@ -130,7 +84,6 @@ function timelineNameToObject(_name) {
   }
   return 'no exercise fits that name';
 }
-
 function addToWorkout(elem) {
   const exerciseObject = timelineNameToObject(elem.target.textContent);
 
@@ -166,7 +119,6 @@ function decrementTimeline() {
   }
 }
 
-
 function selectTimeline(elem) {
   const tempArr = [];
 
@@ -181,7 +133,6 @@ function selectTimeline(elem) {
   console.log(timelinePointer);
   updateSelected();
 }
-
 function updateSelected(offset) {
   console.log(timelinePointer);
 
@@ -207,6 +158,11 @@ function updateSelected(offset) {
   timerValue = (timelinePointer + timelineOffset) * 30;
   updateTimer();
 }
+function deleteSelectedExercise() {
+  timelineList.splice(timelineOffset + timelinePointer, 1);
+  timelinePointer += -1;
+  refreshTimeline();
+}
 
 
 function updateTimer() {
@@ -224,12 +180,50 @@ function updateTimer() {
 }
 
 
-function deleteSelectedExercise() {
-  timelineList.splice(timelineOffset + timelinePointer, 1);
-  timelinePointer += -1;
-  refreshTimeline();
-}
+// functions pertaining to the exercise List section
+function populateExercises() {
+  for (let i = 0 + (pageNumber * 8); i < (pageNumber + 1) * 8; i++) {
+    const exerciseElem = document.createElement('p');
+    exerciseElem.classList.add('exerciseItem');
 
+    if (i <= displayedExerciseList.length - 1) {
+      exerciseElem.textContent = displayedExerciseList[i].name;
+
+      if (displayedExerciseList[i].difficulty === 'rest') {
+        exerciseElem.classList.add('workoutEasy');
+      } else {
+        exerciseElem.classList.add('workoutHard');
+      }
+
+      exerciseElem.addEventListener('click', addToWorkout);
+    }
+
+    exerciseListElem.append(exerciseElem);
+  }
+}
+function refreshList() {
+  const numberOfNodes = exerciseListElem.children.length;
+
+  // clear list
+  for (let i = 0; i < numberOfNodes; i++) {
+    console.log('cleared list');
+    exerciseListElem.removeChild(exerciseListElem.children[0]);
+  }
+
+  populateExercises();
+}
+function incrementPage() {
+  if (displayedExerciseList[((pageNumber + 1) * 8)]) {
+    pageNumber += 1;
+    refreshList();
+  }
+}
+function decrementPage() {
+  if (pageNumber > 0) {
+    pageNumber -= 1;
+    refreshList();
+  }
+}
 
 function searchNameAndIntensity() {
   let nameValue = document.querySelector('#nameInput').value;
@@ -262,7 +256,9 @@ function closeSubmit(elemId) {
   document.querySelector(elemId).classList.add('hidden');
 }
 
-function finaliseExercise() {
+
+// functions for the create of a new workout
+function finaliseExerciseList() {
   const finalExerciseList = [];
   let j = 0;
 
@@ -326,9 +322,10 @@ function calculateDifficultyFactor(arr, sumDuration) {
   } else { return 'easy'; }
 }
 
+// creates a workout object and sends it to the sever to be added to the current user's list of workouts
 async function submitWorkout() {
   const finalName = document.querySelector('#submitName').value;
-  const finalExerciseList = finaliseExercise();
+  const finalExerciseList = finaliseExerciseList();
   const finalLength = calculateSumDuration(finalExerciseList);
   const finalDifficulty = calculateDifficultyFactor(finalExerciseList, finalLength);
 
@@ -360,6 +357,8 @@ async function submitWorkout() {
   }
 }
 
+
+// uses the response from createExercise to refresh the exercise list
 function loadResponseExercises(resExercises) {
   exerciseList = resExercises;
   displayedExerciseList = exerciseList;
@@ -367,11 +366,11 @@ function loadResponseExercises(resExercises) {
   refreshList();
 }
 
+// two functions for the choosing of difficulty of a new exercise
 function setExerciseDifficulty(difficulty) {
   newExerciseDifficultyChoice = difficulty;
   selectExerciseDifficulty();
 }
-
 function selectExerciseDifficulty() {
   const intenseButtonRef = document.querySelector('#intenseButton');
   const restButtonRef = document.querySelector('#restButton');
@@ -385,7 +384,8 @@ function selectExerciseDifficulty() {
   }
 }
 
-async function createExercise() { // make this use the response from the POST to refresh the exercise list, rather than re-GETing the exercises from the server
+// creates an exercise object and sends it to the server to be added to the current user's list of exercises
+async function createExercise() {
   const exerciseName = document.querySelector('#submitExerciseName').value;
   const exerciseDescription = document.querySelector('#submitExerciseDescription').value;
   const exerciseDifficulty = newExerciseDifficultyChoice;
