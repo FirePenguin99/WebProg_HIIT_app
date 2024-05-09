@@ -18,6 +18,7 @@ All Webpages are functional on any resolution, but are primarily designed for mo
 - Each user has a Daily Workout
     - Upon completion of the Daily Workout, the Daily Workout is locked out to the user for 48 to 12 hours, depending on its difficulty stat (hard: 48, medium: 24, easy: 12).
     - This lock out was intended for health purposes, as whilst doing research apparently HIIT workouts strain the body enough that 24 hours is not enough time of a rest if the user was doing HIIT exercises once every day.
+    - The lockout is lifted after the time is up.
 - The user can customise a Workout. Each user is given a list of default exercises to compose a Workout with.
     - Typing in the fields above the Exercise List will filter based on exercise name (left field) and exercise difficulty (right field, options are "rest" and "intense")
     - Clicking the "Done!" button asks the user to name the Workout and submits it to user's Workout list on the server
@@ -43,3 +44,4 @@ There was no use of AI at all.
 
 # Final Thoughts
 In last year's Application Programming, I said I was interested to learn more typical web design. But due to the mobile nature of the specification, I have managed to accidentally dodge learning to create and style a proper website once again.
+However my understand of HTML requests like GET and POST has significantly improved. Last year I couldn't get POST to work and I'm glad to say that I've finally succeeded.
